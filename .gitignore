@@ -1,0 +1,17 @@
+# Global
+node_modules
+.env
+dist
+build
+.DS_Store
+*.log
+
+# Client React
+client/.env
+client/node_modules
+client/dist
+
+# Server Node
+server/.env
+server/node_modules
+server/dist
