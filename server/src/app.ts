@@ -1,16 +1,17 @@
 import express from 'express'
 import cors from 'cors'
+import testRoutes from './routes/test.route'
+
 const app = express()
+
 app.use(cors())
+app.use(express.json())
 
 
-app.get('/', (req, res) => {
-  res.send('Hello FC Provence ! 👋⚽')
-})
+// Utilisation du router
+app.use('/api', testRoutes)
 
-app.get('/api/test', (req, res) => {
-  res.send({ message : 'API fonctionnelle'})
-})
+
 
 
 const PORT = 3000

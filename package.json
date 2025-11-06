@@ -1,0 +1,25 @@
+{
+  "name": "fcp",
+  "version": "1.0.0",
+  "description": "Projet fullstack pour un club de football local :",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "concurrently -n \"BACK,FRONT\" -c \"green,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alyaesub/FCP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alyaesub/FCP/issues"
+  },
+  "homepage": "https://github.com/Alyaesub/FCP#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
