@@ -1,4 +1,5 @@
 import './styles/global.scss'
+import HelloTest from './components/HelloTest'
 
 function App() {
   return (
@@ -6,9 +7,11 @@ function App() {
       <div className='divTest'>
         <h1>Bienvenue sur le site du FC Provence ⚽</h1>
         <p>Front-end opérationnel 🚀</p>
+        <HelloTest />
       </div>
     </>
   )
 }
+
 
 export default App
