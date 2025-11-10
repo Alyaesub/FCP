@@ -101,5 +101,4 @@ npm run dev
 
 ## 🙌 Auteur
 
-Développé par [Pascal Reynier](https://github.com/Alyaesub)  
-Projet d’apprentissage et de professionnalisation front + back
+Alyaesub

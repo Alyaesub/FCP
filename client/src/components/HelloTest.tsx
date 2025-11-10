@@ -12,7 +12,7 @@ function HelloTest() {
 
   return (
     <div>
-      <h2>Test connexion back-end 👇</h2>
+      <h2>Test connexion back-end :</h2>
       <p>{message}</p>
     </div>
   )
