@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn src/app.ts"
+    "dev": "ts-node-dev --respawn src/app.ts",
+    "migrate": "mysql -u$DB_USER -p$DB_PASS $DB_NAME < src/database/migrations/001_create_tables.sql",
+    "seed": "mysql -u$DB_USER -p$DB_PASS $DB_NAME < src/database/seeds/001_insert_data.sql"
   },
   "keywords": [],
   "author": "",
