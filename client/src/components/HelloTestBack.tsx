@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-function HelloTest() {
+function HelloTestBack() {
   const [message, setMessage] = useState('Chargement...')
 
   useEffect(() => {
@@ -18,4 +18,4 @@ function HelloTest() {
   )
 }
 
-export default HelloTest
+export default HelloTestBack

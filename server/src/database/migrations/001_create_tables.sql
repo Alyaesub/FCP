@@ -1,8 +1,11 @@
--- TABLE EQUIPES
-CREATE TABLE IF NOT EXISTS equipes (
+-- TABLE EQUIPES du club et exterieure
+CREATE TABLE equipes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100) NOT NULL,
-  categorie VARCHAR(50) NOT NULL
+  categorie VARCHAR(50),
+  ville VARCHAR(100),
+  logo VARCHAR(255),
+  type ENUM('club', 'exterieure') NOT NULL DEFAULT 'club'
 );
 
 -- TABLE JOUEURS
@@ -32,17 +35,16 @@ CREATE TABLE IF NOT EXISTS matches (
   id INT AUTO_INCREMENT PRIMARY KEY,
   date DATETIME NOT NULL,
   location VARCHAR(100) NOT NULL,
-  opponent VARCHAR(100) NOT NULL,
-  equipe_domicile_id INT,
-  equipe_exterieur_id INT,
+  equipe_domicile_id INT NOT NULL,
+  equipe_adverse_id INT NOT NULL,
   score_domicile INT,
   score_exterieur INT,
   is_home BOOLEAN DEFAULT TRUE,
   is_tournament BOOLEAN DEFAULT FALSE,
   tournament_id INT,
-  FOREIGN KEY (tournament_id) REFERENCES tournaments(id) ON DELETE SET NULL,
-  FOREIGN KEY (equipe_domicile_id) REFERENCES equipes(id) ON DELETE SET NULL,
-  FOREIGN KEY (equipe_exterieur_id) REFERENCES equipes(id) ON DELETE SET NULL
+  FOREIGN KEY (equipe_domicile_id) REFERENCES equipes(id) ON DELETE CASCADE,
+  FOREIGN KEY (equipe_adverse_id) REFERENCES equipes(id) ON DELETE CASCADE,
+  FOREIGN KEY (tournament_id) REFERENCES tournaments(id) ON DELETE SET NULL
 );
 
 -- TABLE GALERIES
