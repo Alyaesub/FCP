@@ -1,104 +1,139 @@
-# ⚽ Site du Club FC Provence
+# ⚽ FC Provence — plateforme club
 
-Application fullstack moderne pour gérer un club de football local :  
-📅 matchs, 👥 équipes, 📸 galeries, 📊 tableau de bord administrateur.
-
----
-
-## 🚀 Stack technique
-
-| Côté            | Techno                            |
-| --------------- | --------------------------------- |
-| Front-end       | React + TypeScript + Vite + SCSS  |
-| Back-end        | Node.js + Express + TypeScript    |
-| Base de données | MySQL (à venir)                   |
-| Environnement   | Vite + ts-node-dev + Concurrently |
+Application fullstack (React + Express) pour gérer un club de football : 📅 matchs, 👥 équipes, 📸 galeries et 📊 tableau de bord admin.
 
 ---
 
-## 📁 Structure du projet
+## Vue d’ensemble
+
+-   Front-end Vite + React + TypeScript, styles SCSS modulaires.
+-   API Express en TypeScript avec CORS et parsing JSON.
+-   Connexion MySQL via `mysql2/promise` configurée par variables d’environnement.
+-   Démarrage simultané front/back grâce à `concurrently`.
+
+---
+
+## Stack & versions
+
+| Domaine         | Techno                       | Version                 |
+| --------------- | ---------------------------- | ----------------------- |
+| Front-end       | React                        | 19.1.1                  |
+|                 | React DOM                    | 19.1.1                  |
+|                 | Vite                         | 7.1.7                   |
+|                 | TypeScript                   | 5.9.3                   |
+|                 | ESLint / eslint-plugin-react | 9.36.0 / 5.2.0          |
+|                 | SCSS                         | via Vite                |
+| Back-end        | Node.js (recommandé)         | ≥ 18.x                  |
+|                 | Express                      | 5.1.0                   |
+|                 | cors                         | 2.8.5                   |
+|                 | dotenv                       | 17.2.3                  |
+|                 | ts-node-dev                  | 2.0.0                   |
+|                 | TypeScript                   | 5.9.3                   |
+| Outils racine   | concurrently                 | 9.2.1                   |
+| Base de données | MySQL                        | à configurer via `.env` |
+
+---
+
+## Structure du projet
 
 ```
 FCP/
-├── client/        → Front React + Vite
-│   ├── src/
-│   │   ├── components/
-│   │   ├── styles/
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   └── package.json
-├── server/        → Back Express + TypeScript
-│   ├── src/
-│   │   ├── routes/
-│   │   └── app.ts
-│   └── package.json
-├── package.json
+├── client/           → Front React + Vite (TypeScript, SCSS)
+│   └── src/
+│       ├── components/
+│       ├── styles/
+│       ├── App.tsx
+│       └── main.tsx
+├── server/           → API Express + TypeScript
+│   └── src/
+│       ├── Controllers/
+│       ├── Models/
+│       ├── middlewares/
+│       ├── routes/
+│       ├── services/
+│       ├── utils/
+│       ├── database/
+│       └── app.ts
+├── package.json      → scripts global + concurrently
 └── README.md
 ```
 
 ---
 
-## 🧪 Lancer le projet en développement
+## Prérequis
 
-### 1. Installer toutes les dépendances
-
-```bash
-# Depuis la racine
-cd FCP
-
-# Installer les dépendances du root (pour concurrently)
-npm install
-
-# Installer côté front
-cd client
-npm install
-
-# Installer côté back
-cd ../server
-npm install
-```
-
-### 2. Lancer le front + le back en 1 seule commande
-
-Depuis la **racine du projet `FCP/`** :
-
-```bash
-npm run dev
-```
-
--   Le front sera dispo sur : [http://localhost:5173](http://localhost:5173)
--   Le back sur : [http://localhost:3000](http://localhost:3000)
+-   Node.js ≥ 18 (compatible Vite 7 et TypeScript 5.9)
+-   npm (inclus avec Node)
+-   MySQL accessible (local ou distant) si vous souhaitez tester la connexion BDD
 
 ---
 
-## 🔍 Routes test
+## Installation
 
-| Méthode | URL         | Résultat attendu                    |
-| ------- | ----------- | ----------------------------------- |
-| `GET`   | `/api/test` | `{ message: "API opérationnelle" }` |
-| `GET`   | `/`         | `Cannot GET /` (normal)             |
+```bash
+# 1) Installer les dépendances globales (concurrently)
+npm install
+
+# 2) Installer le front
+cd client && npm install
+
+# 3) Installer le back
+cd ../server && npm install
+```
+
+### Configuration `server/.env`
+
+```bash
+DB_HOST=localhost
+DB_USER=fcprovence_admin
+DB_PASS=************
+DB_NAME=********
+```
+
+Les valeurs par défaut sont prévues dans `connect.ts` mais il est conseillé d’utiliser un fichier `.env`.
 
 ---
 
-## ✅ Fonctionnalités prévues
+## Démarrage
 
--   [x] Initialisation projet front & back
--   [x] Structure modulaire SCSS
--   [x] Communication front ↔ back (test `fetch`)
+-   Lancer front + back depuis la racine : `npm run dev`
+
+    -   Front : http://localhost:5173
+    -   API : http://localhost:3000
+
+-   Lancer uniquement le front : `npm run dev --prefix client`
+-   Lancer uniquement l’API : `npm run dev --prefix server`
+
+---
+
+## Routes d’essai
+
+| Méthode | URL         | Résultat attendu                            |
+| ------- | ----------- | ------------------------------------------- |
+| GET     | `/api/test` | `{ "message": "API opérationnelle OK BG" }` |
+| GET     | `/`         | `Cannot GET /` (normal)                     |
+
+---
+
+## Backlog / suivi
+
+-   [x] Initialisation front & back
+-   [x] Base SCSS modulaire
+-   [x] Communication front ↔ back (fetch)
 -   [x] Lancement fullstack via `concurrently`
--   [ ] Connexion à la base de données
--   [ ] Création de routes CRUD (équipes, joueurs, matchs, galeries…)
+-   [ ] Connexion MySQL finalisée (migrations + seeds)
+-   [ ] Routes CRUD (équipes, joueurs, matchs, galeries…)
 -   [ ] Upload images
 -   [ ] Interface d’administration sécurisée
 
 ---
 
-## 🧠 Déploiment
+## Déploiement
 
--   Déploiement prévue sur Vercel (front) + Render ou O2Switch (back)
+-
 
 ---
 
-## 🙌 Auteur
+## Auteur
 
 Alyaesub
