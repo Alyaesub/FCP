@@ -1,4 +1,10 @@
--- TABLE EQUIPES du club et exterieure
+/*
+*TABLE EQUIPES
+  - Une seule table pour toutes les équipes (club + adversaires)
+  - Le champ "type" permet de différencier :
+  'club'       : équipe du FC Provence
+  'exterieure' : adversaire, équipe d'un autre club
+*/
 CREATE TABLE equipes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100) NOT NULL,
@@ -8,7 +14,12 @@ CREATE TABLE equipes (
   type ENUM('club', 'exterieure') NOT NULL DEFAULT 'club'
 );
 
--- TABLE JOUEURS
+/*
+*TABLE JOUEURS
+  - Chaque joueur appartient à une équipe (club ou externe)
+  - ON DELETE CASCADE : si une équipe est supprimée,
+    on supprime automatiquement ses joueurs associés
+*/
 CREATE TABLE IF NOT EXISTS joueurs (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100) NOT NULL,
@@ -30,7 +41,13 @@ CREATE TABLE IF NOT EXISTS tournaments (
   end_date DATE NOT NULL
 );
 
--- TABLE MATCHS
+/*
+*TABLE MATCHS
+  - Gestion des matchs : club vs adversaire
+  - Utilise la même table "equipes" pour les 2 équipes
+  → equipe_domicile_id  = équipe du club (à domicile)
+  → equipe_adverse_id   = équipe adverse (club ou externe)
+*/
 CREATE TABLE IF NOT EXISTS matches (
   id INT AUTO_INCREMENT PRIMARY KEY,
   date DATETIME NOT NULL,
