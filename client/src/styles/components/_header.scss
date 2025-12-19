@@ -1,0 +1,127 @@
+// src/styles/components/_header.scss
+
+.header {
+  background-color: var(--club-green);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__logo {
+    a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: white;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    img {
+      height: 60px;
+      width: auto;
+    }
+
+    span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--club-yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+
+    ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      display: block;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--club-yellow);
+      }
+
+      &.active {
+        background-color: var(--club-yellow);
+        color: var(--club-green);
+      }
+    }
+  }
+
+  &__actions {
+    .btn-admin {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--club-yellow);
+      color: var(--club-green);
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: 2px solid var(--club-yellow);
+
+      &:hover {
+        background-color: transparent;
+        color: var(--club-yellow);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 968px) {
+  .header {
+    &__container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    &__nav {
+      ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  }
+}
