@@ -1,13 +1,25 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.scss'
-import HelloTestBack from './components/HelloTestBack'
-import HelloTestFront from './components/HelloTestFront'
+import Header from './components/Header'
+import Home from './pages/Home'
+import Sponsors from './components/Sponsors'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <>
-      <HelloTestFront/>
-      <HelloTestBack />
-    </>
+    
+    <BrowserRouter>
+      <div className='app'>
+        <Header/>
+        <main className='main-content'>
+          <Routes>
+            <Route path='/' element={<Home />}/>
+          </Routes>
+        </main>
+        <Sponsors/>
+        <Footer/>
+      </div>
+    </BrowserRouter>
   )
 }
 

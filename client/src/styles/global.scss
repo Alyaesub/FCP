@@ -1,2 +1,12 @@
+//import des variable et mixins
+@use './abstracts/mixins';
+@use './abstracts/variables';
+
+//import des style de base
 @use './base/main';
 @use './base/appTsx';
+
+//import des composants
+@use './components/header';
+@use './components/footer';
+@use './components/sponsors';
