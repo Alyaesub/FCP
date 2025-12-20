@@ -1,0 +1,88 @@
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Root container
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// App container
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Main content
+.main-content {
+  flex: 1; 
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-secondary);
+  color: var(--text-color);
+  background-color: var(--soft-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary); // Tektur pour les titres
+  font-weight: 700;
+  color: var(--club-green);
+}
+
+p {
+  font-family: var(--font-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Listes
+ul, ol {
+  list-style: none;
+}
+
+// classes utilitaires
+//font
+.font-primary {
+  font-family: var(--font-primary);
+}
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+//color
+.text-white {
+  color: white !important;
+}
+.text-yellow {
+  color: var(--club-yellow) !important;
+}
+.text-green {
+  color: var(--club-green) !important;
+}
+//
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}

@@ -7,6 +7,7 @@
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-primary);
 
   &__container {
     max-width: 1400px;
@@ -38,7 +39,7 @@
     }
 
     span {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: bold;
       color: var(--club-yellow);
       text-transform: uppercase;
@@ -71,6 +72,7 @@
       border-radius: 5px;
       transition: all 0.3s ease;
       display: block;
+      font-family: var(--font-primary);
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
@@ -87,7 +89,7 @@
   &__actions {
     .btn-admin {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      padding: 0.3rem 0.5rem;
       background-color: var(--club-yellow);
       color: var(--club-green);
       text-decoration: none;
@@ -95,6 +97,7 @@
       font-weight: bold;
       transition: all 0.3s ease;
       border: 2px solid var(--club-yellow);
+      font-family: var(--font-primary);
 
       &:hover {
         background-color: transparent;
