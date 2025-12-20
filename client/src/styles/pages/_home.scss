@@ -1,0 +1,66 @@
+.home {
+  // Hero Section
+  &__hero {
+    background: green;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    &-title {
+      color: white; // ← Surcharge le vert global
+      font-size: clamp(2rem, 5vw, 4rem); // Responsive
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    &-subtitle {
+      color: var(--club-yellow);
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-family: var(--font-secondary);
+      margin-bottom: 2rem;
+      font-family: var(--font-primary);
+    }
+    
+    &-cta {
+      margin-top: 2rem;
+    }
+  }
+
+  // Section result matchs home
+  &__result {
+    padding: 4rem 2rem;
+    background-color: var(--club-yellow) ;
+    
+    &-title {
+      color: var(--club-green); 
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
+  
+  // Section Actualités
+  &__news {
+    padding: 4rem 2rem;
+    background-color: white;
+    
+    &-title {
+      color: var(--club-green); 
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
+  
+  // Section Équipes
+  &__teams {
+    padding: 4rem 2rem;
+    background-color: var(--soft-background);
+    
+    &-title {
+      color: var(--club-green);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
+}

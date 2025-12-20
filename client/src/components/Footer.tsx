@@ -8,7 +8,7 @@ function Footer() {
         
         {/* Section Liens */}
         <div className="footer__section">
-          <h3>Liens :</h3>
+          <h3>Liens vers les pages :</h3>
           <ul>
             <li><Link to="/">Accueil</Link></li>
             <li><Link to="/actualites">Actualités</Link></li>

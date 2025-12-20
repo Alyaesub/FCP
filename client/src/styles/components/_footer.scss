@@ -4,7 +4,8 @@
   background-color: var(--club-green);
   color: white;
   padding: 3rem 0 0 0;
-  margin-top: auto; // Pour pousser le footer en bas si la page est courte
+  margin-top: auto;
+  font-family: var(--font-secondary);
 
   &__container {
     max-width: 1400px;
@@ -27,6 +28,9 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 7rem);
+      
 
       li {
         margin-bottom: 0.5rem;
@@ -70,8 +74,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
       background-color: var(--club-yellow);
       color: var(--club-green);
       border-radius: 50%;

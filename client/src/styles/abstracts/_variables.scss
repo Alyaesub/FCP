@@ -1,14 +1,18 @@
 // Couleurs du club FC Provence
 :root {
+  // Couleurs
   --club-green: #02572d;
   --club-yellow: #fab131;
   --club-yellow-light: #fbb031;
   --club-black: #000000;
   --club-gold: #fab131;
-  
   // Couleurs complémentaires
   --soft-background: #f9f9f9;
   --text-color: #333333;
   --accent-blue: #dceeff;
   --white: #ffffff;
+
+  // Font Family
+  --font-primary: 'Tektur', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
 }
