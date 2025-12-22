@@ -1,0 +1,111 @@
+.card-match {
+  background-color: var(--club-green);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  // Header avec catégorie
+  &__header {
+    text-align: center;
+  }
+
+  &__category {
+    display: inline-block;
+    background-color: var(--club-yellow);
+    color: var(--club-green);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+
+  // Corps avec logos et score
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__team {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  &__score-number {
+    font-size: 2.5rem;
+  }
+
+  &__score-separator {
+    font-size: 1.5rem;
+    color: var(--club-yellow);
+  }
+
+  // Footer avec date et lieu
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    color: white;
+  }
+
+  &__date {
+    font-weight: 600;
+  }
+
+  &__separator {
+    color: var(--club-yellow);
+  }
+
+  &__location {
+    font-style: italic;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    &__logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    &__score {
+      font-size: 1.5rem;
+    }
+
+    &__score-number {
+      font-size: 2rem;
+    }
+  }
+}

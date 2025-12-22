@@ -1,5 +1,5 @@
-// src/components/Header.tsx
 import { Link } from 'react-router-dom';
+import Button from './Button';
 import logoFCP from '../assets/logo-rond-sansBg.png'
 
 function Header() {
@@ -28,8 +28,10 @@ function Header() {
 
         {/* Bouton Administration */}
         <div className="header__actions">
-          <Link to="/admin" className="btn-admin">
-            Administration
+          <Link to="/admin">
+            <Button variant="primary" size="small">
+              Administration
+            </Button>
           </Link>
         </div>
       </div>
