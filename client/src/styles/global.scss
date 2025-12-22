@@ -9,6 +9,8 @@
 @use './components/header';
 @use './components/footer';
 @use './components/sponsors';
+@use './components/button';
+@use './components/cardMatch';
 
 //import des pages
 @use './pages/home'
