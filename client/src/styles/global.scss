@@ -11,6 +11,8 @@
 @use './components/sponsors';
 @use './components/button';
 @use './components/cardMatch';
+@use './components/cardActuPrincipal';
+@use './components/cardActuMini';
 
 //import des pages
 @use './pages/home'

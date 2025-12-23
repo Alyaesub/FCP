@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 //import composant
 import Button from "../components/Button";
-import CardMatch from '../components/CardMatch';
-
+import CardMatch from '../components/CardMatch'
+import CardActuPrincipal from '../components/CardActuPrincipal'
+import CardActuMini from '../components/CardActuMini';
 //import img
 import logoFCP from '../assets/logo-rond-sansBg.png'
 import logoEXT from '../assets/logo-ext.png'
@@ -60,12 +61,51 @@ function Home() {
               date="16/12/2024"
               location="Stade de Mas-Thibert"
             />
-            </div>
+          </div>
       </section>
       
+      {/* Cards actualités */}
       <section className="home__news">
-        <h2 className="home__news-title">Nos dernières actualités</h2>
-        {/* Cards actualités */}
+        <div className="home__news-header">
+          <h2 className="home__news-title">Actualités récentes</h2>
+          <Link to="/actualites" className="home__news-link">
+            Voir toutes les actualités →
+          </Link>
+        </div>
+        <div className='home__news-container'>
+          <CardActuPrincipal
+            title='Kermes du FCP'
+            items={[
+              "concours de tirs au but",
+              "grillade",
+              "tombolat"
+            ]}
+            date='23/04/26'
+            location='Stade de Mas-Thibert'
+          />
+          <div className="home__news-mini">
+            <CardActuMini
+          title='lorem ipsum'
+          items={[
+            "lorem ipsum",
+            "lorem ipsum",
+            "lorem ipsum"
+          ]}
+          date='05/03/26'
+          location='Stade de Mas-Thibert'
+          />
+          <CardActuMini
+          title='lorem ipsum'
+          items={[
+            "lorem ipsum",
+            "lorem ipsum",
+            "lorem ipsum"
+          ]}
+          date='05/03/26'
+          location='Stade de Mas-Thibert'
+          />
+          </div>
+        </div>
       </section>
       
       <section className="home__teams">

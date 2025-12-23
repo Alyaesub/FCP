@@ -1,0 +1,118 @@
+.card-actu-principale {
+  background-color: var(--club-green);
+  border-radius: 15px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* height: fit-content; // ← Prend juste la hauteur de son contenu
+  align-self: start; // ← Se colle en haut */
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  // Encart jaune avec contenu
+  &__content {
+    background-color: var(--club-yellow);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__title {
+    color: var(--club-green);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__item {
+    color: var(--club-green);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    // Icône check avant chaque item
+    &::before {
+      content: '✓';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background-color: var(--club-green);
+      color: var(--club-yellow);
+      border-radius: 50%;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+  }
+
+  // Footer avec date et lieu
+  &__footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--club-yellow);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  &__date,
+  &__location {
+    text-transform: uppercase;
+  }
+
+  &__separator {
+    font-size: 1.2rem;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &__content {
+      padding: 1.5rem;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__item {
+      font-size: 0.9rem;
+    }
+
+    &__footer {
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    &__separator {
+      display: none;
+    }
+  }
+}
