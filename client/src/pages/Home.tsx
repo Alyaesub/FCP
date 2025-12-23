@@ -4,9 +4,14 @@ import Button from "../components/Button";
 import CardMatch from '../components/CardMatch'
 import CardActuPrincipal from '../components/CardActuPrincipal'
 import CardActuMini from '../components/CardActuMini';
-//import img
+import CardJoueur from '../components/CardJoueur';
+//import img en attendant branchement back
 import logoFCP from '../assets/logo-rond-sansBg.png'
 import logoEXT from '../assets/logo-ext.png'
+import joueurHommeRandom from '../assets/mascotte-ballon2.png'
+import joueurFilleRandom from '../assets/mascotte-lionne2.png'
+import joueur1 from '../assets/photo-perso1.jpg'
+import joueur2 from '../assets/photo-perso2.jpg'
 
 
 function Home() {
@@ -64,7 +69,7 @@ function Home() {
           </div>
       </section>
       
-      {/* Cards actualités */}
+      {/* section home actualités */}
       <section className="home__news">
         <div className="home__news-header">
           <h2 className="home__news-title">Actualités récentes</h2>
@@ -108,9 +113,42 @@ function Home() {
         </div>
       </section>
       
+      {/* sections home équipes */}
       <section className="home__teams">
-        <h2 className="home__teams-title">Découvrez nos équipes</h2>
-        {/* Cards équipes */}
+        <div className="home__teams-header">
+    <h2 className="home__teams-title">Découvrez les équipes</h2>
+    <Link to="/equipes" className="home__teams-link">
+      Voir toutes nos équipes →
+    </Link>
+  </div>
+  
+  <div className="home__teams-container">
+    <CardJoueur 
+      photo={joueur1}
+      numero={9}
+      nom="LORRAM"
+    />
+    <CardJoueur 
+      photo={joueur2}
+      numero={10}
+      nom="LORRAM"
+    />
+    <CardJoueur 
+      photo={joueurHommeRandom}
+      numero={19}
+      nom="WELLINGTON"
+    />
+    <CardJoueur 
+      photo={joueurFilleRandom}
+      numero={7}
+      nom="OLIVEIRA"
+    />
+    <CardJoueur 
+      photo={joueurHommeRandom}
+      numero={2}
+      nom="LORRAM"
+    />
+  </div>
       </section>
     </div>
   );
