@@ -1,0 +1,73 @@
+.carousel-joueurs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  // Container des 3 cards
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    flex: 1;
+    
+    @media (max-width: 968px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Flèches
+  &__arrow {
+    background-color: var(--club-green);
+    color: var(--club-yellow);
+    border: 2px solid var(--club-yellow);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; // Empêche les flèches de rétrécir
+    
+    &:hover {
+      background-color: var(--club-yellow);
+      color: var(--club-green);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+  }
+
+ /*  // Position des flèches
+  &__arrow--left {
+    // Pas de style spécifique, déjà géré par flex
+  }
+
+  &__arrow--right {
+    // Pas de style spécifique, déjà géré par flex
+  } */
+
+  // Responsive - Flèches en dehors sur mobile
+  @media (max-width: 640px) {
+    padding: 0 3rem; // Espace pour les flèches
+  }
+}
