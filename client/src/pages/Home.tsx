@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import CardMatch from '../components/CardMatch'
 import CardActuPrincipal from '../components/CardActuPrincipal'
 import CardActuMini from '../components/CardActuMini';
-import CardJoueur from '../components/CardJoueur';
+import CarouselJoueurs from '../components/CarouselJoueurs';
 //import img en attendant branchement back
 import logoFCP from '../assets/logo-rond-sansBg.png'
 import logoEXT from '../assets/logo-ext.png'
@@ -15,6 +15,16 @@ import joueur2 from '../assets/photo-perso2.jpg'
 
 
 function Home() {
+   // Hook temporaire de tous les joueurs
+  const joueursData = [
+    { photo: joueur1, numero: 10, nom: "WELLINGTON" },
+    { photo: joueur2, numero: 9, nom: "OLIVEIRA" },
+    { photo: joueurHommeRandom, numero: 2, nom: "LORRAM" },
+    { photo: joueurFilleRandom, numero: 1, nom: "MARTINEZ" },
+    { photo: joueur2, numero: 5, nom: "Ahmad" },
+    { photo: joueurHommeRandom, numero: 6, nom: "Dupond" },
+    { photo: joueurFilleRandom, numero: 8, nom: "Redouan" },
+  ];
   return (
     <div className="home">
       <section className="home__hero">
@@ -116,39 +126,13 @@ function Home() {
       {/* sections home équipes */}
       <section className="home__teams">
         <div className="home__teams-header">
-    <h2 className="home__teams-title">Découvrez les équipes</h2>
-    <Link to="/equipes" className="home__teams-link">
-      Voir toutes nos équipes →
-    </Link>
-  </div>
-  
-  <div className="home__teams-container">
-    <CardJoueur 
-      photo={joueur1}
-      numero={9}
-      nom="LORRAM"
-    />
-    <CardJoueur 
-      photo={joueur2}
-      numero={10}
-      nom="LORRAM"
-    />
-    <CardJoueur 
-      photo={joueurHommeRandom}
-      numero={19}
-      nom="WELLINGTON"
-    />
-    <CardJoueur 
-      photo={joueurFilleRandom}
-      numero={7}
-      nom="OLIVEIRA"
-    />
-    <CardJoueur 
-      photo={joueurHommeRandom}
-      numero={2}
-      nom="LORRAM"
-    />
-  </div>
+          <h2 className="home__teams-title">Découvrez les équipes</h2>
+          <Link to="/equipes" className="home__teams-link">
+            Voir toutes nos équipes →
+          </Link>
+        </div>
+        {/* Le carousel tout propre ! */}
+        <CarouselJoueurs joueurs={joueursData} />
       </section>
     </div>
   );
