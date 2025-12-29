@@ -1,0 +1,70 @@
+.section-cta {
+  background-color: #000000; // Fond noir
+  padding: 4rem 2rem;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Deux colonnes égales
+    gap: 4rem;
+    align-items: center;
+    
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr; // Une seule colonne sur mobile
+      gap: 2rem;
+      text-align: center;
+    }
+  }
+  
+  // Contenu texte + bouton
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  &__title {
+    color: var(--club-yellow);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: capitalize;
+    margin: 0;
+  }
+  
+  &__subtitle {
+    color: white;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  // Image à droite
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+      
+      @media (max-width: 968px) {
+        max-width: 350px;
+      }
+    }
+  }
+  
+  // Responsive
+  @media (max-width: 968px) {
+    padding: 3rem 1.5rem;
+    
+    &__content {
+      align-items: center;
+    }
+  }
+}

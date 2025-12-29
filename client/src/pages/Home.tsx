@@ -5,25 +5,30 @@ import CardMatch from '../components/CardMatch'
 import CardActuPrincipal from '../components/CardActuPrincipal'
 import CardActuMini from '../components/CardActuMini';
 import CarouselJoueurs from '../components/CarouselJoueurs';
+import SectionCTAHome from '../components/SectionCTAHome';
 //import img en attendant branchement back
+//img CardMAtch
 import logoFCP from '../assets/logo-rond-sansBg.png'
-import logoEXT from '../assets/logo-ext.png'
+import logoAno1 from '../assets/logo-ano.jpg'
+//img carrousel
 import joueurHommeRandom from '../assets/mascotte-ballon2.png'
 import joueurFilleRandom from '../assets/mascotte-lionne2.png'
 import joueur1 from '../assets/photo-perso1.jpg'
 import joueur2 from '../assets/photo-perso2.jpg'
+//img sectionCTAHome
+import logoSectionCTAHome from '../assets/logo-SectionCTA.png'
 
 
 function Home() {
    // Hook temporaire de tous les joueurs
   const joueursData = [
-    { photo: joueur1, numero: 10, nom: "WELLINGTON" },
-    { photo: joueur2, numero: 9, nom: "OLIVEIRA" },
-    { photo: joueurHommeRandom, numero: 2, nom: "LORRAM" },
-    { photo: joueurFilleRandom, numero: 1, nom: "MARTINEZ" },
-    { photo: joueur2, numero: 5, nom: "Ahmad" },
-    { photo: joueurHommeRandom, numero: 6, nom: "Dupond" },
-    { photo: joueurFilleRandom, numero: 8, nom: "Redouan" },
+    { photo: joueur1, numero: 1, nom: "JOUEUR A" },
+    { photo: joueur2, numero: 2, nom: "JOUEUR B" },
+    { photo: joueurHommeRandom, numero: 3, nom: "JOUEUR C" },
+    { photo: joueurFilleRandom, numero: 4, nom: "JOUEUR D" },
+    { photo: joueurFilleRandom, numero: 5, nom: "JOUEUR E" },
+    { photo: joueurHommeRandom, numero: 6, nom: "JOUEUR F" },
+    { photo: joueurFilleRandom, numero: 7, nom: "JOUEUR G" },
   ];
   return (
     <div className="home">
@@ -47,7 +52,7 @@ function Home() {
               category="U10"
               homeTeamLogo={logoFCP}
               homeTeamName="FC Provence"
-              awayTeamLogo={logoEXT}
+              awayTeamLogo={logoAno1}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -58,7 +63,7 @@ function Home() {
               category="U10"
               homeTeamLogo={logoFCP}
               homeTeamName="FC Provence"
-              awayTeamLogo={logoEXT}
+              awayTeamLogo={logoAno1}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -69,7 +74,7 @@ function Home() {
               category="U10"
               homeTeamLogo={logoFCP}
               homeTeamName="FC Provence"
-              awayTeamLogo={logoEXT}
+              awayTeamLogo={logoAno1}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -123,7 +128,7 @@ function Home() {
         </div>
       </section>
       
-      {/* sections home équipes */}
+      {/* sections home joueurs/équipes */}
       <section className="home__teams">
         <div className="home__teams-header">
           <h2 className="home__teams-title">Découvrez les équipes</h2>
@@ -131,8 +136,20 @@ function Home() {
             Voir toutes nos équipes →
           </Link>
         </div>
-        {/* Le carousel tout propre ! */}
+        {/* carousel card joueur */}
         <CarouselJoueurs joueurs={joueursData} />
+      </section>
+
+      {/* section CTA home -> gallery */}
+      <section className='home__sectionCTA'>
+        <SectionCTAHome
+        title='Découvrez les photos de nos matchs et événement'
+        subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
+        buttonText='Voir nos galerie photos'
+        buttonLink='/galerie'
+        image= {logoSectionCTAHome}
+        imageAlt='Mascotte du club'
+        />
       </section>
     </div>
   );
