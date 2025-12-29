@@ -16,6 +16,9 @@
 @use './components/cardJoueur';
 @use './components/carouselJoueurs';
 @use './components/sectionCTAHome';
+@use './components/cardEvenement';
+@use './components/carouselEvenement';
+@use './components/bannerScroll';
 
 //import des pages
 @use './pages/home'

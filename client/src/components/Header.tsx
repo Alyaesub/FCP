@@ -20,7 +20,6 @@ function Header() {
             <li><Link to="/">Accueil</Link></li>
             <li><Link to="/actualites">Actualités</Link></li>
             <li><Link to="/equipes">Nos équipes</Link></li>
-            <li><Link to="/calendrier">Calendrier</Link></li>
             <li><Link to="/galerie">Galerie photo</Link></li>
             <li><Link to="/contact">Contact & info</Link></li>
           </ul>

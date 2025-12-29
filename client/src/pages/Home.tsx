@@ -6,10 +6,14 @@ import CardActuPrincipal from '../components/CardActuPrincipal'
 import CardActuMini from '../components/CardActuMini';
 import CarouselJoueurs from '../components/CarouselJoueurs';
 import SectionCTAHome from '../components/SectionCTAHome';
+import CarouselEvenements from '../components/CarouselEvenement';
+import BannerScroll from '../components/BannerScroll';
+
 //import img en attendant branchement back
-//img CardMAtch
+//img CardMAtch & evenement
 import logoFCP from '../assets/logo-rond-sansBg.png'
 import logoAno1 from '../assets/logo-ano.jpg'
+import logoAno2 from '../assets/logo-ano-2.jpg'
 //img carrousel
 import joueurHommeRandom from '../assets/mascotte-ballon2.png'
 import joueurFilleRandom from '../assets/mascotte-lionne2.png'
@@ -17,6 +21,7 @@ import joueur1 from '../assets/photo-perso1.jpg'
 import joueur2 from '../assets/photo-perso2.jpg'
 //img sectionCTAHome
 import logoSectionCTAHome from '../assets/logo-SectionCTA.png'
+
 
 
 function Home() {
@@ -29,6 +34,39 @@ function Home() {
     { photo: joueurFilleRandom, numero: 5, nom: "JOUEUR E" },
     { photo: joueurHommeRandom, numero: 6, nom: "JOUEUR F" },
     { photo: joueurFilleRandom, numero: 7, nom: "JOUEUR G" },
+  ];
+  // hook temporaire pour les event
+  const evenementsData = [
+    {
+      type: 'match' as const,
+      title: 'Notre prochain matche contre :',
+      logo: logoAno2,
+      logoAlt: 'logo equipe ext',
+      date: '13/25/35',
+      location: 'Arles'
+    },
+    {
+      type: 'event' as const,
+      title: 'retrouver nous pour la tombolat',
+      items: ['Jeux pour enfants', 'Concours', 'Barbecue'],
+      date: '13/25/35',
+      location: 'Arles'
+    },
+    {
+      type: 'event' as const,
+      title: 'retrouver nous pour la tombolat',
+      items: ['Jeux pour enfants', 'Concours', 'Barbecue'],
+      date: '13/25/35',
+      location: 'Arles'
+    },
+    {
+      type: 'match' as const,
+      title: 'Notre prochain matche contre :',
+      logo: logoAno2,
+      logoAlt: 'logo equipe ext',
+      date: '13/25/35',
+      location: 'Arles'
+    },
   ];
   return (
     <div className="home">
@@ -128,6 +166,8 @@ function Home() {
         </div>
       </section>
       
+      {/* Bandeau défilant */}
+      <BannerScroll text='Découvre nos équipes et nos joueurs'/>
       {/* sections home joueurs/équipes */}
       <section className="home__teams">
         <div className="home__teams-header">
@@ -151,6 +191,16 @@ function Home() {
         imageAlt='Mascotte du club'
         />
       </section>
+
+      {/* Bandeau défilant */}
+      <BannerScroll text='Evénement a venir'/>
+      {/* section evenement */}
+      <section className="home__events">
+    {/* Titre */}
+    <h2 className="home__events-title">Nos futurs matchs & événements</h2>
+    {/* Carousel */}
+    <CarouselEvenements evenements={evenementsData} />
+  </section>
     </div>
   );
 }

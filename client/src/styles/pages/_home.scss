@@ -113,15 +113,17 @@
   /*
   * Section Équipes
   */
+  //bandeau défilant a voir dans la sections evenement
   &__teams {
-  padding: 4rem 2rem;
   background-color: var(--soft-background);
-  
+  margin-bottom: 4rem;
+
   // Header avec titre + lien
   &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 3rem;
     margin-bottom: 3rem;
     max-width: 1200px;
     margin-left: auto;
@@ -165,6 +167,22 @@
     @media (max-width: 640px) {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+/*
+* Section Evenement 
+*/
+&__events {
+  background-color: var(--club-green);
+  padding: 0 0 4rem 0; // Pas de padding en haut à cause du bandeau
+  
+  // Titre
+  &-title {
+    color: var(--club-yellow);
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    padding-top: 2rem;
   }
 }
 }
