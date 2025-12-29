@@ -1,0 +1,48 @@
+.banner-scroll {
+  padding: 1rem 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  
+  &__content {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+  }
+  
+  &__item {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  &__separator {
+    font-size: 1.5rem;
+  }
+  
+  // Animation du défilement
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  // Responsive
+  @media (max-width: 768px) {
+    &__item {
+      font-size: 1rem;
+      gap: 1.5rem;
+    }
+    
+    &__content {
+      gap: 1.5rem;
+    }
+  }
+}
