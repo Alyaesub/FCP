@@ -89,6 +89,7 @@ function Home() {
             <CardMatch 
               category="U10"
               homeTeamLogo={logoFCP}
+              variant="green"
               homeTeamName="FC Provence"
               awayTeamLogo={logoAno1}
               awayTeamName="Cruzeiro"
@@ -99,6 +100,7 @@ function Home() {
             />
             <CardMatch 
               category="U10"
+              variant="green"
               homeTeamLogo={logoFCP}
               homeTeamName="FC Provence"
               awayTeamLogo={logoAno1}
@@ -110,6 +112,7 @@ function Home() {
             />
             <CardMatch 
               category="U10"
+              variant="green"
               homeTeamLogo={logoFCP}
               homeTeamName="FC Provence"
               awayTeamLogo={logoAno1}
@@ -196,11 +199,11 @@ function Home() {
       <BannerScroll text='Evénement a venir'/>
       {/* section evenement */}
       <section className="home__events">
-    {/* Titre */}
-    <h2 className="home__events-title">Nos futurs matchs & événements</h2>
-    {/* Carousel */}
-    <CarouselEvenements evenements={evenementsData} />
-  </section>
+        {/* Titre */}
+        <h2 className="home__events-title">Nos futurs matchs & événements</h2>
+        {/* Carousel */}
+        <CarouselEvenements evenements={evenementsData} />
+      </section>
     </div>
   );
 }
