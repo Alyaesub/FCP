@@ -19,6 +19,9 @@
 @use './components/cardEvenement';
 @use './components/carouselEvenement';
 @use './components/bannerScroll';
+@use './components/heroPages';
+@use './components/carouselMatchs';
 
 //import des pages
-@use './pages/home'
+@use './pages/home';
+@use './pages/actualites'

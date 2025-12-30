@@ -8,6 +8,7 @@ type CardMatchProps = {
   awayScore: number;
   date: string;
   location: string;
+  variant?: 'green' | 'yellow'; 
 };
 
 const CardMatch = ({
@@ -19,10 +20,11 @@ const CardMatch = ({
   homeScore,
   awayScore,
   date,
-  location
+  location,
+  variant = "green"
 }: CardMatchProps) => {
   return (
-    <div className="card-match">
+    <div className={`card-match card-match--${variant}`}>
       {/* Header avec catégorie */}
       <div className="card-match__header">
         <span className="card-match__category">{category}</span>
