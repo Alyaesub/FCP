@@ -21,7 +21,10 @@
 @use './components/bannerScroll';
 @use './components/heroPages';
 @use './components/carouselMatchs';
+@use './components/cardEquipe';
 
 //import des pages
 @use './pages/home';
-@use './pages/actualites'
+@use './pages/actualites';
+@use './pages/equipes';
+@use './pages/equipe-details';
