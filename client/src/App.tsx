@@ -3,8 +3,11 @@ import './styles/global.scss'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Actualites from './pages/Actualites'
+import Equipes from './pages/Equipes'
+import EquipeDetails from './pages/EquipesDetails'
 import Sponsors from './components/Sponsors'
 import Footer from './components/Footer'
+
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />}/>
             <Route path='/actualites' element={<Actualites/>}/>
+            <Route path='/equipes' element={<Equipes/>}/>
+            <Route path='/equipes/:slug' element={<EquipeDetails/>}/>
           </Routes>
         </main>
         <Sponsors/>

@@ -1,0 +1,152 @@
+.equipe-details {
+  
+  // Hero section (fond jaune)
+  &__hero {
+    background-color: var(--club-yellow);
+    padding: 3rem 0;
+  }
+
+  &__hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
+  &__hero-title {
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--club-green);
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+    
+    @media (max-width: 640px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__hero-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    
+    @media (max-width: 640px) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  // Section Coach 
+  &__coach {
+    background-color: var(--club-green);
+    padding: 2rem 0;
+  }
+
+    &__coach-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__coach-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--club-yellow);
+    margin: 0rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__coach-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--club-yellow);
+    
+    @media (max-width: 640px) {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  &__coach-nom {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--club-yellow);
+    margin: 0;
+    
+    @media (max-width: 640px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  // Section Photo équipe 
+  &__photo {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+  }
+
+  &__photo-img {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 400px;
+    }
+    
+    @media (max-width: 640px) {
+      height: 300px;
+    }
+  }
+
+  // Section Joueurs 
+  &__joueurs {
+    background-color: #f9f9f9;
+    padding: 4rem 0 6rem 0;
+  }
+
+  &__joueurs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}

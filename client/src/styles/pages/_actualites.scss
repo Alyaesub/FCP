@@ -2,23 +2,70 @@
   background-color: var(--soft-background);
 
     /*
-  * Section result Cardmatchs actu
-  */ 
-  &__result {
-  padding: 4rem 2rem;
-  background-color: var(--club-green);
-  &-title {
-    color: var(--club-yellow);
-    text-align: center;
-    margin-bottom: 3rem;
+    * Section result Cardmatchs actu
+    */ 
+    &__result {
+    padding: 4rem 2rem;
+    background-color: var(--club-green);
+    &-title {
+      color: var(--club-yellow);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    // Container pour les 3 cards
+    &-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
-  // Container pour les 3 cards
-  &-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
+    /*
+    * Section Événements (matchs futurs + événements futurs)
+    */
+    &__events {
+      background-color: var(--club-green);
+      padding: 2rem 2rem 2rem 2rem;
+
+      &-title {
+        font-family: var(--font-primary);
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        color: var(--club-yellow);
+        text-align: center;
+        margin-bottom: 3rem;
+        font-weight: 700;
+      }
+
+      // Container pour centrer et limiter la largeur
+      &-footer {
+        max-width: 1200px;
+        margin: 2rem auto 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: flex-end; // Aligne à droite
+      }
+
+      // Lien vers page galerie
+      &-link {
+        color: var(--club-yellow);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: white;
+        }
+      }
+
+      // Responsive
+      @media (max-width: 768px) {
+        padding: 3rem 1rem;
+        
+        &-footer {
+          justify-content: center;
+          padding: 0 1rem;
+        }
+      }
+    }
 }

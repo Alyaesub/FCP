@@ -5,7 +5,7 @@ import CardMatch from '../components/CardMatch'
 import CardActuPrincipal from '../components/CardActuPrincipal'
 import CardActuMini from '../components/CardActuMini';
 import CarouselJoueurs from '../components/CarouselJoueurs';
-import SectionCTAHome from '../components/SectionCTAHome';
+import SectionCTAHome from '../components/SectionCTA';
 import CarouselEvenements from '../components/CarouselEvenement';
 import BannerScroll from '../components/BannerScroll';
 
@@ -197,6 +197,7 @@ function Home() {
 
       {/* Bandeau défilant */}
       <BannerScroll text='Evénement a venir'/>
+
       {/* section evenement */}
       <section className="home__events">
         {/* Titre */}
