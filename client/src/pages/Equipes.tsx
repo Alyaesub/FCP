@@ -11,7 +11,7 @@ import logoSectionCTATeam from '../assets/logo-SectionCTA.png'
 function Equipes() {
   return (
     <div className="equipes">
-      <section className="equipes__heros">
+      <section className="equipes__hero">
         <HeroPages
         title="Découvrez toutes nos équipes"
         />

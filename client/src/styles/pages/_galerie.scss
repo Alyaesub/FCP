@@ -1,0 +1,102 @@
+.galerie {
+  
+  &__hero {
+    margin-bottom: 0;
+  }
+
+  // Section Header (Titre + Select)
+  &__header {
+    background-color: #f9f9f9;
+    padding: 3rem 0 2rem 0;
+  }
+
+  &__header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--club-green);
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  // Select pour filtrer
+  &__select {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--club-green);
+    background-color: var(--club-yellow);
+    border: 2px solid var(--club-green);
+    border-radius: 8px;
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2302572d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.2rem;
+    
+    &:hover {
+      background-color: var(--club-green);
+      color: var(--club-yellow);
+      border-color: var(--club-yellow);
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(2, 87, 45, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  // Grid de photos
+  &__grid-section {
+    background-color: #f9f9f9;
+    padding: 3rem 0 6rem 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  // Message quand aucune photo
+  &__no-photos {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    color: var(--club-green);
+    text-align: center;
+    padding: 4rem 0;
+    margin: 0;
+  }
+}
