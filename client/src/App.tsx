@@ -5,8 +5,10 @@ import Home from './pages/Home'
 import Actualites from './pages/Actualites'
 import Equipes from './pages/Equipes'
 import EquipeDetails from './pages/EquipesDetails'
+import Galerie from './pages/Galerie'
 import Sponsors from './components/Sponsors'
 import Footer from './components/Footer'
+import Contact from './pages/Contact'
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <Route path='/actualites' element={<Actualites/>}/>
             <Route path='/equipes' element={<Equipes/>}/>
             <Route path='/equipes/:slug' element={<EquipeDetails/>}/>
+            <Route path='/galerie' element={<Galerie/>}/>
+            <Route path='/contact' element={<Contact/>}/>
           </Routes>
         </main>
         <Sponsors/>

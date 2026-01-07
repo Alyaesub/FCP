@@ -1,0 +1,222 @@
+.contact {
+  
+  // Section Infos Contact (fond vert)
+  &__infos {
+    background-color: var(--club-green);
+    padding: 5rem 0;
+  }
+
+  &__infos-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--club-yellow);
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__infos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__info-card {
+    background-color: transparent;
+    border: 3px solid var(--club-yellow);
+    border-radius: 15px;
+    padding: 2.5rem 2rem;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+      min-height: 150px;
+    }
+  }
+
+  &__info-card-title {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--club-yellow);
+    margin: 0 0 1rem 0;
+    
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__info-card-text {
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    color: white;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__info-card-link {
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+    
+    &:hover {
+      color: var(--club-yellow);
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Section Inscriptions (fond jaune)
+  &__inscriptions {
+    background-color: var(--club-yellow);
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  &__inscriptions-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--club-green);
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__inscriptions-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  &__inscriptions-mascotte {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+    
+    @media (max-width: 1024px) {
+      display: none; // Cache les mascottes sur tablette/mobile
+    }
+    
+    &--left {
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    &--right {
+      animation: bounce 2s ease-in-out infinite 0.5s;
+    }
+  }
+
+  &__inscriptions-card {
+    background-color: var(--club-green);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+    flex: 1;
+    
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+      max-width: 100%;
+    }
+  }
+
+  &__inscriptions-card-title {
+    font-family: var(--font-primary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--club-yellow);
+    margin: 0 0 2rem 0;
+    text-align: center;
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__inscriptions-card-documents {
+    margin-top: 2rem;
+  }
+
+  &__inscriptions-card-subtitle {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--club-yellow);
+    margin: 0 0 1rem 0;
+    
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__inscriptions-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      font-family: var(--font-secondary);
+      font-size: 1.1rem;
+      color: white;
+      line-height: 1.8;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      
+      &::before {
+        content: "•";
+        color: var(--club-yellow);
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -2px;
+      }
+      
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Animation bounce pour les mascottes
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

@@ -22,9 +22,13 @@
 @use './components/heroPages';
 @use './components/carouselMatchs';
 @use './components/cardEquipe';
+@use './components/cardPhoto';
+@use './components/lightbox';
 
 //import des pages
 @use './pages/home';
 @use './pages/actualites';
 @use './pages/equipes';
 @use './pages/equipe-details';
+@use './pages/galerie';
+@use './pages/contact';
