@@ -4,7 +4,11 @@ import CardEquipe from '../components/CardEquipe';
 import BannerScroll from "../components/BannerScroll";
 
 //img equipes
-import logo from '../assets/logo-rond-sansBg.png';
+import logoU10 from '../assets/FCP_U10.png';
+import logoU9 from '../assets/FCP_U9.png';
+import logoU12 from '../assets/FCP_U12.png';
+import logoU7 from '../assets/FCP_U7.png';
+import logoSenior from '../assets/logo-rond-sansBg.png';
 //img sectionCTAHome
 import logoSectionCTATeam from '../assets/logo-SectionCTA.png'
 
@@ -29,31 +33,31 @@ function Equipes() {
           <h2 className="equipes__grid-title">toutes les équipes de notre club</h2>
           <div className="equipes__grid">
             <CardEquipe
-              logo={logo}
+              logo={logoU7}
               nom="FCP U7"
               details="L'équipe des baby"
               slug="u7"
             />
             <CardEquipe
-              logo={logo}
+              logo={logoU9}
               nom="FCP U9"
               details="Les jeunes pousses"
               slug="u9"
             />
             <CardEquipe
-              logo={logo}
+              logo={logoU10}
               nom="FCP U10"
               details="Les futurs champions"
               slug="u10"
             />
             <CardEquipe
-              logo={logo}
+              logo={logoU12}
               nom="FCP U12"
               details="L'avenir du club"
               slug="u12"
             />
             <CardEquipe
-              logo={logo}
+              logo={logoSenior}
               nom="Seniors"
               details="L'équipe première"
               slug="seniors"

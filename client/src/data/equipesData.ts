@@ -7,6 +7,7 @@ import photoEquipe2 from '../assets/photoEquipe2.jpg'
 import photoEquipe3 from '../assets/photoEquipe3.jpg';
 import photoEquipe4 from '../assets/photoEquipe4.jpg';
 import photoEquipe5 from '../assets/photoEquipe5.jpg';
+import photoU7 from '../assets/FCP_U7-removebg-preview.png'
 
 
 export interface Joueur {
@@ -42,7 +43,7 @@ export const equipesData: Equipe[] = [
     nom: "FCP U7",
     categorie: "U7",
     description: "L'équipe des baby, nos plus jeunes champions en herbe !",
-    logo: logo,
+    logo: photoU7,
     coach: {
       nom: "Jean Dupont",
       photo: photoCoach,
