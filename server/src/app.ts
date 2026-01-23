@@ -1,7 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import testRoutes from './routes/test.route'
 import { dbPromise } from './database/connect';
+import testRoutes from './routes/test.route'
+import equipeRoutes from './routes/equipe.route'
+
 
 const app = express()
 app.use(cors())
@@ -11,6 +13,7 @@ app.use(express.json())
 // Utilisation du router :
 
 app.use('/api', testRoutes)
+app.use('/api/equipes', equipeRoutes)
 
 
 
