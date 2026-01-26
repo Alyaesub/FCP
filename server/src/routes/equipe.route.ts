@@ -9,19 +9,15 @@ import {
 
 const router = Router();
 
-// GET /api/equipes  Liste de toutes les équipes
+// Liste de toutes les équipes
 router.get("/", getAllEquipes);
-
-// GET /api/equipes/:id Détail d'une équipe
+// Détail d'une équipe
 router.get("/:id", getEquipeById);
-
-// POST /api/equipes  Créer une équipe
+// Créer une équipe
 router.post("/", createEquipe);
-
-// PUT /api/equipes/:id  Modifier une équipe
+// Modifier une équipe
 router.put("/:id", updateEquipe);
-
-// DELETE /api/equipes/:id  Supprimer une équipe
+// Supprimer une équipe
 router.delete("/:id", deleteEquipe);
 
 export default router;
