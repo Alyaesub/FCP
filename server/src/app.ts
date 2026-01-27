@@ -6,6 +6,7 @@ import equipeRoutes from './routes/equipe.route'
 import joueurRoutes from './routes/joueur.route'
 import matchRoutes from './routes/match.route'
 import evenementRoutes from './routes/evenement.route'
+import actualiteRoutes from './routes/actualite.route'
 
 
 const app = express()
@@ -20,6 +21,7 @@ app.use('/api/equipes', equipeRoutes)
 app.use('/api/joueurs', joueurRoutes)
 app.use('/api/matches', matchRoutes)
 app.use('/api/evenements', evenementRoutes)
+app.use('/api/actualites', actualiteRoutes)
 
 
 
