@@ -7,6 +7,8 @@ import joueurRoutes from './routes/joueur.route'
 import matchRoutes from './routes/match.route'
 import evenementRoutes from './routes/evenement.route'
 import actualiteRoutes from './routes/actualite.route'
+import galerieRoutes from './routes/galerie.route'
+import photoRoutes from './routes/photo.route'
 
 
 const app = express()
@@ -22,6 +24,8 @@ app.use('/api/joueurs', joueurRoutes)
 app.use('/api/matches', matchRoutes)
 app.use('/api/evenements', evenementRoutes)
 app.use('/api/actualites', actualiteRoutes)
+app.use('/api/galeries', galerieRoutes)
+app.use('/api/photos', photoRoutes)
 
 
 
