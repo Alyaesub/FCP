@@ -5,8 +5,6 @@ import CarouselEvenements from '../components/CarouselEvenement';
 
 
 //import img en attendant branchement back
-//img CardMAtch & evenement
-/* import logoFCP from '../assets/logo-rond-sansBg.png' */
 import logoAno1 from '../assets/logo-ano.jpg'
 import logoFCP from '../assets/logo-rond-sansBg.png'
 import logoAno2 from '../assets/logo-ano-2.jpg'

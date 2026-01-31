@@ -9,18 +9,16 @@ import SectionCTAHome from '../components/SectionCTA';
 import CarouselEvenements from '../components/CarouselEvenement';
 import BannerScroll from '../components/BannerScroll';
 
-//import img en attendant branchement back
+//import img 
+import { IMAGES } from '../constants/images';
 //img CardMAtch & evenement
-import logoFCP from '../assets/logo-rond-sansBg.png'
-import logoAno1 from '../assets/logo-ano.jpg'
 import logoAno2 from '../assets/logo-ano-2.jpg'
 //img carrousel
 import joueurHommeRandom from '../assets/mascotte-ballon2.png'
 import joueurFilleRandom from '../assets/mascotte-lionne2.png'
 import joueur1 from '../assets/photo-perso1.jpg'
 import joueur2 from '../assets/photo-perso2.jpg'
-//img sectionCTAHome
-import logoSectionCTAHome from '../assets/logo-SectionCTA.png'
+
 
 
 
@@ -88,10 +86,10 @@ function Home() {
           <div className="home__result-container">
             <CardMatch 
               category="U10"
-              homeTeamLogo={logoFCP}
+              homeTeamLogo={IMAGES.ecussons.u10}
               variant="green"
               homeTeamName="FC Provence"
-              awayTeamLogo={logoAno1}
+              awayTeamLogo={IMAGES.logosAnonymes.logo1}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -101,9 +99,9 @@ function Home() {
             <CardMatch 
               category="U10"
               variant="green"
-              homeTeamLogo={logoFCP}
+              homeTeamLogo={IMAGES.ecussons.u10}
               homeTeamName="FC Provence"
-              awayTeamLogo={logoAno1}
+              awayTeamLogo={IMAGES.logosAnonymes.logo2}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -113,9 +111,9 @@ function Home() {
             <CardMatch 
               category="U10"
               variant="green"
-              homeTeamLogo={logoFCP}
+              homeTeamLogo={IMAGES.ecussons.u10}
               homeTeamName="FC Provence"
-              awayTeamLogo={logoAno1}
+              awayTeamLogo={IMAGES.logosAnonymes.logo3}
               awayTeamName="Cruzeiro"
               homeScore={4}
               awayScore={2}
@@ -190,7 +188,7 @@ function Home() {
         subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
         buttonText='Voir nos galerie photos'
         buttonLink='/galerie'
-        image= {logoSectionCTAHome}
+        image= {IMAGES.sectionCTA.logo}
         imageAlt='Mascotte du club'
         />
       </section>

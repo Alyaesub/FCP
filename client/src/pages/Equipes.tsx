@@ -3,14 +3,8 @@ import SectionCTATeam from '../components/SectionCTA';
 import CardEquipe from '../components/CardEquipe';
 import BannerScroll from "../components/BannerScroll";
 
-//img equipes
-import logoU10 from '../assets/FCP_U10.png';
-import logoU9 from '../assets/FCP_U9.png';
-import logoU12 from '../assets/FCP_U12.png';
-import logoU7 from '../assets/FCP_U7.png';
-import logoSenior from '../assets/logo-rond-sansBg.png';
-//img sectionCTAHome
-import logoSectionCTATeam from '../assets/logo-SectionCTA.png'
+//import img 
+import { IMAGES } from '../constants/images';
 
 function Equipes() {
   return (
@@ -33,31 +27,31 @@ function Equipes() {
           <h2 className="equipes__grid-title">toutes les équipes de notre club</h2>
           <div className="equipes__grid">
             <CardEquipe
-              logo={logoU7}
+              logo={IMAGES.ecussons.u7}
               nom="FCP U7"
               details="L'équipe des baby"
               slug="u7"
             />
             <CardEquipe
-              logo={logoU9}
+              logo={IMAGES.ecussons.u9}
               nom="FCP U9"
               details="Les jeunes pousses"
               slug="u9"
             />
             <CardEquipe
-              logo={logoU10}
+              logo={IMAGES.ecussons.u10}
               nom="FCP U10"
               details="Les futurs champions"
               slug="u10"
             />
             <CardEquipe
-              logo={logoU12}
+              logo={IMAGES.ecussons.u12}
               nom="FCP U12"
               details="L'avenir du club"
               slug="u12"
             />
             <CardEquipe
-              logo={logoSenior}
+              logo={IMAGES.ecussons.seniors}
               nom="Seniors"
               details="L'équipe première"
               slug="seniors"
@@ -80,7 +74,7 @@ function Equipes() {
         subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
         buttonText='Contactez nous'
         buttonLink='/contact'
-        image= {logoSectionCTATeam}
+        image= {IMAGES.sectionCTA.logo}
         imageAlt='Mascotte du club'
         />
       </section>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from './Button';
-import logoFCP from '../assets/logo-rond-sansBg.png'
+import { IMAGES } from '../constants/images';
 
 function Header() {
   return (
@@ -9,7 +9,7 @@ function Header() {
         {/* Logo */}
         <div className="header__logo">
           <Link to="/">
-            <img src={logoFCP} alt="FC Provence Logo" />
+            <img src={IMAGES.logo} alt="FC Provence Logo" />
             <span>FC Provence</span>
           </Link>
         </div>

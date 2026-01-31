@@ -1,11 +1,9 @@
 import HeroPages from "../components/HeroPages";
 import BannerScroll from "../components/BannerScroll";
 import SectionCTATeam from '../components/SectionCTA';
-import mascotteLion from '../assets/mascotte-lion-sansBG.png';
-import mascotteLionne from '../assets/mascotte-lionne-sansBG.png';
 
-//img sectionCTAHome
-import logoSectionCTATeam from '../assets/logo-SectionCTA.png'
+//import img 
+import { IMAGES } from '../constants/images';
 
 function Contact() {
   return (
@@ -77,7 +75,7 @@ function Contact() {
         subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
         buttonText='Contactez nous par mail'
         buttonLink="mailto:www.fc-provence.fr"
-        image= {logoSectionCTATeam}
+        image= {IMAGES.sectionCTA.logo}
         imageAlt='Mascotte du club'
         />
       </section>
@@ -96,7 +94,7 @@ function Contact() {
           <div className="contact__inscriptions-content">
             {/* Mascotte gauche */}
             <img 
-              src={mascotteLion} 
+              src={IMAGES.mascottes.lion} 
               alt="Mascotte FC Provence"
               className="contact__inscriptions-mascotte contact__inscriptions-mascotte--left"
             />
@@ -119,7 +117,7 @@ function Contact() {
 
             {/* Mascotte droite */}
             <img 
-              src={mascotteLionne} 
+              src={IMAGES.mascottes.lionne} 
               alt="Mascotte FC Provence"
               className="contact__inscriptions-mascotte contact__inscriptions-mascotte--right"
             />

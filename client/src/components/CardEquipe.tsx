@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+
 interface CardEquipeProps {
   logo: string;
   nom: string;
