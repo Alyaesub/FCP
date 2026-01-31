@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import { dbPromise } from './database/connect';
-import testRoutes from './routes/test.route'
 import equipeRoutes from './routes/equipe.route'
 import joueurRoutes from './routes/joueur.route'
 import matchRoutes from './routes/match.route'
@@ -10,6 +9,7 @@ import actualiteRoutes from './routes/actualite.route'
 import galerieRoutes from './routes/galerie.route'
 import photoRoutes from './routes/photo.route'
 import uploadRoutes from "./routes/upload.route";
+import userRoutes from "./routes/user.route"
 
 
 const app = express()
@@ -17,13 +17,11 @@ const PORT = 3000
 
 //Middlewares
 app.use(cors())
-app.use(express.json({ limit: "50mb" }));  // ← AUGMENTE ICI
+app.use(express.json({ limit: "50mb" }));  // ← AUGMENTE LA taille des fichier upload
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-/* app.use(express.json()) */
 
 
 // routes :
-app.use('/api', testRoutes)
 app.use('/api/equipes', equipeRoutes)
 app.use('/api/joueurs', joueurRoutes)
 app.use('/api/matches', matchRoutes)
@@ -32,6 +30,7 @@ app.use('/api/actualites', actualiteRoutes)
 app.use('/api/galeries', galerieRoutes)
 app.use('/api/photos', photoRoutes)
 app.use("/api/upload", uploadRoutes);
+app.use("/api", userRoutes);
 
 
 
