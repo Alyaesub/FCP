@@ -6,18 +6,17 @@ import {
   updateEquipe,
   deleteEquipe,
 } from "../controllers/equipe.controller";
+import { authMiddleware, isAdmin } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// Liste de toutes les équipes
+// Routes publique 
 router.get("/", getAllEquipes);
-// Détail d'une équipe
 router.get("/:id", getEquipeById);
-// Créer une équipe
-router.post("/", createEquipe);
-// Modifier une équipe
-router.put("/:id", updateEquipe);
-// Supprimer une équipe
-router.delete("/:id", deleteEquipe);
+
+// Routes protégé
+router.post("/", authMiddleware, isAdmin, createEquipe);
+router.put("/:id", authMiddleware, isAdmin, updateEquipe);
+router.delete("/:id", authMiddleware, isAdmin, deleteEquipe);
 
 export default router;

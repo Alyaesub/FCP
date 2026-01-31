@@ -7,25 +7,18 @@ import {
   updatePhoto,
   deletePhoto,
 } from "../controllers/photo.controller";
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// GET /api/photos 
+// Routes publique
 router.get("/", getAllPhotos);
-
-// GET /api/photos/:id Détail d'une photo
 router.get("/:id", getPhotoById);
-
-// GET /api/photos/galerie/:galerieId  Photos d'une galerie
 router.get("/galerie/:galerieId", getPhotosByGalerieId);
 
-// POST /api/photos 
-router.post("/", createPhoto);
-
-// PUT /api/photos/:id 
-router.put("/:id", updatePhoto);
-
-// DELETE /api/photos/:id 
-router.delete("/:id", deletePhoto);
+// Route protége Admin ET staff
+router.post("/", authMiddleware, createPhoto);
+router.put("/:id", authMiddleware, updatePhoto);
+router.delete("/:id", authMiddleware, deletePhoto);
 
 export default router;

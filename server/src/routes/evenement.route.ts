@@ -7,25 +7,22 @@ import {
   updateEvenement,
   deleteEvenement,
 } from "../controllers/evenement.controller";
+import { authMiddleware, isAdmin } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// GET /api/evenements 
+// Routes publique
 router.get("/", getAllEvenements);
-
-// GET /api/evenements/type/:type Événements par type (match, tournoi, réunion, autre)
 router.get("/type/:type", getEvenementsByType);
-
-// GET /api/evenements/:id 
 router.get("/:id", getEvenementById);
 
-// POST /api/evenements 
-router.post("/", createEvenement);
+// Routes protége
+router.post("/", authMiddleware, isAdmin, createEvenement);
 
 // PUT /api/evenements/:id 
-router.put("/:id", updateEvenement);
+router.put("/:id", authMiddleware, isAdmin, updateEvenement);
 
 // DELETE /api/evenements/:id
-router.delete("/:id", deleteEvenement);
+router.delete("/:id", authMiddleware, isAdmin, deleteEvenement);
 
 export default router;

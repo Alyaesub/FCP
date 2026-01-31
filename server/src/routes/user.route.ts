@@ -7,10 +7,10 @@ import { authMiddleware, isAdmin } from '../middlewares/authMiddleware';
 const router = Router();
 
 /**
- * Routes publiques (pas besoin d'authentification)
+ * Routes publiques
  */
-router.post('/register', registerUser); // Inscription
-router.post('/login', loginUser);       // Connexion
+router.post('/register', registerUser); 
+router.post('/login', loginUser);     
 
 /**
  * Routes protégées (admin uniquement)
