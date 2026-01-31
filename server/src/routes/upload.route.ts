@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { uploadImage } from "../controllers/upload.controller";
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// POST /api/upload → Upload une image sur Cloudinary
-router.post("/", uploadImage);
+// Route protégée Admin ET staff
+router.post("/", authMiddleware, uploadImage);
 
 export default router;

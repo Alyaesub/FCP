@@ -9,31 +9,20 @@ import {
   updateMatch,
   deleteMatch,
 } from "../controllers/match.controller";
+import { authMiddleware, isAdmin } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-//Liste de tous les matchs
+// Routes publique
 router.get("/", getAllMatches);
-
-// Matchs passés (avec scores)
 router.get("/passes", getMatchesPasses);
-
-// Matchs à venir (sans scores)
 router.get("/futur", getMatchesFutur);
-
-// Détail d'un match
 router.get("/:id", getMatchById);
-
-//  Matchs d'une équipe
 router.get("/equipe/:equipeId", getMatchesByEquipeId);
 
-// Créer un match
-router.post("/", createMatch);
-
-// PModifier un match
-router.put("/:id", updateMatch);
-
-// Supprimer un match
-router.delete("/:id", deleteMatch);
+// Routes protégé
+router.post("/", authMiddleware, isAdmin, createMatch);
+router.put("/:id", authMiddleware, isAdmin, updateMatch);
+router.delete("/:id", authMiddleware, isAdmin, deleteMatch);
 
 export default router;

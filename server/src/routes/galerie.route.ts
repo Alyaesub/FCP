@@ -7,25 +7,18 @@ import {
   updateGalerie,
   deleteGalerie,
 } from "../controllers/galerie.controller";
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// GET /api/galeries Liste de toutes les galeries
+// Route publique
 router.get("/", getAllGaleries);
-
-// GET /api/galeries/:id  Détail d'une galeri
 router.get("/:id", getGalerieById);
-
-// GET /api/galeries/equipe/:equipeId Galeries d'une équipe
 router.get("/equipe/:equipeId", getGaleriesByEquipeId);
 
-// POST /api/galeries Créer une galerie
-router.post("/", createGalerie);
-
-// PUT /api/galeries/:id Modifier une galerie
-router.put("/:id", updateGalerie);
-
-// DELETE /api/galeries/:id 
-router.delete("/:id", deleteGalerie);
+// Routes protégé Admin ET staff
+router.post("/", authMiddleware, createGalerie);
+router.put("/:id", authMiddleware, updateGalerie);
+router.delete("/:id", authMiddleware, deleteGalerie);
 
 export default router;

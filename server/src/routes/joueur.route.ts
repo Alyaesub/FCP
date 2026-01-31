@@ -7,25 +7,19 @@ import {
   updateJoueur,
   deleteJoueur,
 } from "../controllers/joueur.controller";
+import { authMiddleware} from '../middlewares/authMiddleware';
+
 
 const router = Router();
 
-// Liste de tous les joueurs
+// Routes publique
 router.get("/", getAllJoueurs);
-
-//  Détail d'un joueur
 router.get("/:id", getJoueurById);
-
-// Tous les joueurs d'une équipe
 router.get("/equipe/:equipeId", getJoueursByEquipeId);
 
-// Créer un joueur
-router.post("/", createJoueur);
-
-//  Modifier un joueur
-router.put("/:id", updateJoueur);
-
-// Supprimer un joueur
-router.delete("/:id", deleteJoueur);
+// Routes protégé admin ET staff
+router.post("/", authMiddleware, createJoueur);
+router.put("/:id", authMiddleware, updateJoueur);
+router.delete("/:id", authMiddleware, deleteJoueur);
 
 export default router;

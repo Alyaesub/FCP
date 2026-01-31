@@ -6,22 +6,17 @@ import {
   updateActualite,
   deleteActualite,
 } from "../controllers/actualite.controller"
+import { authMiddleware, isAdmin } from '../middlewares/authMiddleware';
 
 const router = Router()
 
-// GET /api/actualites 
+// Routes publique
 router.get("/", getAllActualites);
-
-// GET /api/actualites/:id  Détail d'une actualité
 router.get("/:id", getActualiteById);
 
-// POST /api/actualites 
-router.post("/", createActualite);
-
-// PUT /api/actualites/:id 
-router.put("/:id", updateActualite);
-
-// DELETE /api/actualites/:id 
-router.delete("/:id", deleteActualite);
+// Routes protége
+router.post("/", authMiddleware, isAdmin, createActualite);
+router.put("/:id", authMiddleware, isAdmin, updateActualite);
+router.delete("/:id", authMiddleware, isAdmin, deleteActualite);
 
 export default router;
