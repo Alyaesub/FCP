@@ -1,5 +1,5 @@
-import mascotteLion from '../assets/mascotte-lionBallon-sansBG.png'
-import mascotteLionne from '../assets/mascotte-lionne-sansBG.png'
+//import img 
+import { IMAGES } from '../constants/images';
 
 interface HeroPagesProps {
   title: string;
@@ -10,7 +10,7 @@ const HeroPages = ({ title, subtitle }: HeroPagesProps) => {
   return (
     <section className="hero">
       <div className="hero__mascot hero__mascot--left">
-        <img src={mascotteLion} alt="Mascotte FC Provence" />
+        <img src={IMAGES.mascottes.lionBallon} alt="Mascotte FC Provence" />
       </div>
 
       <div className="hero__content">
@@ -19,7 +19,7 @@ const HeroPages = ({ title, subtitle }: HeroPagesProps) => {
       </div>
 
       <div className="hero__mascot hero__mascot--right">
-        <img src={mascotteLionne} alt="Mascotte FC Provence" />
+        <img src={IMAGES.mascottes.lionne} alt="Mascotte FC Provence" />
       </div>
     </section>
   );

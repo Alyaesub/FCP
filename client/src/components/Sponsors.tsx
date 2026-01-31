@@ -1,7 +1,4 @@
-import Sponsors1 from '../assets/sponsorFake.jpg'
-import Sponsors2 from '../assets/sponsorFake2.jpg'
-import Sponsors3 from '../assets/sponsorFake.webp'
-import Sponsors4 from '../assets/sposorFake3.avif'
+import { IMAGES } from '../constants/images'
 
 function Sponsors() {
   return (
@@ -10,24 +7,24 @@ function Sponsors() {
         <h2 className="sponsors__title">Nos sponsors:</h2>
         
         <div className="sponsors__grid">
-          {/* Sponsor 1 - GEOTEC */}
+          {/* Sponsor 1 */}
           <div className="sponsors__item">
-            <img src={Sponsors1} alt="GEOTEC - Construções e Fundações" />
+            <img src={IMAGES.sponsors.sponsor2} alt="logo rougeline" />
           </div>
 
-          {/* Sponsor 2 - Grupo Buzatto's */}
+          {/* Sponsor 2 */}
           <div className="sponsors__item">
-            <img src={Sponsors2}  alt="Grupo Buzatto's" />
+            <img src={IMAGES.sponsors.sponsor3}  alt="logo RDT" />
           </div>
 
-          {/* Sponsor 3 - MELK Andaimes */}
+          {/* Sponsor 3 */}
           <div className="sponsors__item">
-            <img src={Sponsors3}  alt="MELK Andaimes" />
+            <img src={IMAGES.sponsors.sponsor2}  alt="logo rougeline" />
           </div>
 
-          {/* Sponsor 4 - ADFO */}
+          {/* Sponsor 4  */}
           <div className="sponsors__item">
-            <img src={Sponsors4}  alt="ADFO - Advogados Associados" />
+            <img src={IMAGES.sponsors.sponsor4}  alt="logo RDT" />
           </div>
         </div>
       </div>
