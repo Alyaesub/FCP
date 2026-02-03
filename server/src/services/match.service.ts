@@ -20,7 +20,9 @@ export const getAllMatches = async (): Promise<Match[]> => {
   const [rows] = await db.query<RowDataPacket[]>(
     `SELECT m.*, 
       ed.nom as equipe_domicile_nom,
-      ee.nom as equipe_exterieur_nom
+      ed.logo as equipe_domicile_logo,
+      ee.nom as equipe_exterieur_nom,
+      ee.logo as equipe_exterieur_logo
      FROM matches m
      LEFT JOIN equipes ed ON m.equipe_domicile_id = ed.id
      LEFT JOIN equipes ee ON m.equipe_exterieur_id = ee.id
@@ -35,7 +37,9 @@ export const getMatchById = async (id: number): Promise<Match | null> => {
   const [rows] = await db.query<RowDataPacket[]>(
     `SELECT m.*, 
       ed.nom as equipe_domicile_nom,
-      ee.nom as equipe_exterieur_nom
+      ed.logo as equipe_domicile_logo,
+      ee.nom as equipe_exterieur_nom,
+      ee.logo as equipe_exterieur_logo
      FROM matches m
      LEFT JOIN equipes ed ON m.equipe_domicile_id = ed.id
      LEFT JOIN equipes ee ON m.equipe_exterieur_id = ee.id
@@ -51,7 +55,9 @@ export const getMatchesByEquipeId = async (equipeId: number): Promise<Match[]> =
   const [rows] = await db.query<RowDataPacket[]>(
     `SELECT m.*, 
       ed.nom as equipe_domicile_nom,
-      ee.nom as equipe_exterieur_nom
+      ed.logo as equipe_domicile_logo,
+      ee.nom as equipe_exterieur_nom,
+      ee.logo as equipe_exterieur_logo
      FROM matches m
      LEFT JOIN equipes ed ON m.equipe_domicile_id = ed.id
      LEFT JOIN equipes ee ON m.equipe_exterieur_id = ee.id
@@ -68,7 +74,9 @@ export const getMatchesPasses = async (): Promise<Match[]> => {
   const [rows] = await db.query<RowDataPacket[]>(
     `SELECT m.*, 
       ed.nom as equipe_domicile_nom,
-      ee.nom as equipe_exterieur_nom
+      ed.logo as equipe_domicile_logo,
+      ee.nom as equipe_exterieur_nom,
+      ee.logo as equipe_exterieur_logo
      FROM matches m
      LEFT JOIN equipes ed ON m.equipe_domicile_id = ed.id
      LEFT JOIN equipes ee ON m.equipe_exterieur_id = ee.id
@@ -84,7 +92,9 @@ export const getMatchesFutur = async (): Promise<Match[]> => {
   const [rows] = await db.query<RowDataPacket[]>(
     `SELECT m.*, 
       ed.nom as equipe_domicile_nom,
-      ee.nom as equipe_exterieur_nom
+      ed.logo as equipe_domicile_logo,
+      ee.nom as equipe_exterieur_nom,
+      ee.logo as equipe_exterieur_logo
      FROM matches m
      LEFT JOIN equipes ed ON m.equipe_domicile_id = ed.id
      LEFT JOIN equipes ee ON m.equipe_exterieur_id = ee.id

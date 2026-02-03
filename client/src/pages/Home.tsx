@@ -151,10 +151,10 @@ function Home() {
               <CardMatch
                 key={match.id}
                 category={match.equipe_domicile_nom}
-                homeTeamLogo={IMAGES.ecussons.u10}
+                homeTeamLogo={match.equipe_domicile_logo || IMAGES.logo}
                 variant="green"
                 homeTeamName={match.equipe_domicile_nom}
-                awayTeamLogo={IMAGES.logosAnonymes.logo1}
+                awayTeamLogo={match.equipe_exterieur_logo ||IMAGES.logosAnonymes.logo1}
                 awayTeamName={match.equipe_exterieur_nom}
                 homeScore={match.score_domicile ?? undefined}
                 awayScore={match.score_exterieur ?? undefined}

@@ -7,8 +7,8 @@ type Match = {
   homeTeamName: string;
   awayTeamLogo: string;
   awayTeamName: string;
-  homeScore: number;
-  awayScore: number;
+  homeScore?: number;
+  awayScore?: number;
   date: string;
   location: string;
 };
