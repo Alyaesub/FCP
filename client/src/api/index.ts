@@ -36,7 +36,9 @@ export interface Match {
   equipe_domicile_id: number;
   equipe_exterieur_id: number;
   equipe_domicile_nom: string;  // Vient du JOIN SQL
+  equipe_domicile_logo?: string; 
   equipe_exterieur_nom: string; // Vient du JOIN SQL
+  equipe_exterieur_logo?: string;
   score_domicile?: number | null;
   score_exterieur?: number | null;
   is_home?: boolean;
