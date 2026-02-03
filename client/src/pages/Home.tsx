@@ -1,129 +1,174 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-//import composant
+
+// Composants
 import Button from "../components/Button";
-import CardMatch from '../components/CardMatch'
-import CardActuPrincipal from '../components/CardActuPrincipal'
+import CardMatch from '../components/CardMatch';
+import CardActuPrincipal from '../components/CardActuPrincipal';
 import CardActuMini from '../components/CardActuMini';
 import CarouselJoueurs from '../components/CarouselJoueurs';
 import SectionCTAHome from '../components/SectionCTA';
 import CarouselEvenements from '../components/CarouselEvenement';
 import BannerScroll from '../components/BannerScroll';
 
-//import img 
+// Images fixes
 import { IMAGES } from '../constants/images';
-//img CardMAtch & evenement
-import logoAno2 from '../assets/logo-ano-2.jpg'
-//img carrousel
-import joueurHommeRandom from '../assets/mascotte-ballon2.png'
-import joueurFilleRandom from '../assets/mascotte-lionne2.png'
-import joueur1 from '../assets/photo-perso1.jpg'
-import joueur2 from '../assets/photo-perso2.jpg'
 
-
-
+// API
+import { getMatchsPasses, getActualites, getJoueurs, getEvenements } from '../api/index';
+import type { Match, Actualite, Joueur, Evenement } from '../api/index';
 
 function Home() {
-   // Hook temporaire de tous les joueurs
-  const joueursData = [
-    { photo: joueur1, numero: 1, nom: "JOUEUR A" },
-    { photo: joueur2, numero: 2, nom: "JOUEUR B" },
-    { photo: joueurHommeRandom, numero: 3, nom: "JOUEUR C" },
-    { photo: joueurFilleRandom, numero: 4, nom: "JOUEUR D" },
-    { photo: joueurFilleRandom, numero: 5, nom: "JOUEUR E" },
-    { photo: joueurHommeRandom, numero: 6, nom: "JOUEUR F" },
-    { photo: joueurFilleRandom, numero: 7, nom: "JOUEUR G" },
-  ];
-  // hook temporaire pour les event
-  const evenementsData = [
-    {
-      type: 'match' as const,
-      title: 'Notre prochain matche contre :',
-      logo: logoAno2,
-      logoAlt: 'logo equipe ext',
-      date: '13/25/35',
-      location: 'Arles'
-    },
-    {
+  // ============================================
+  // STATES
+  // ============================================
+  const [matchesPasses, setMatchesPasses] = useState<Match[]>([]);
+  const [actualites, setActualites] = useState<Actualite[]>([]);
+  const [joueurs, setJoueurs] = useState<Joueur[]>([]);
+  const [evenements, setEvenements] = useState<Evenement[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // ============================================
+  // FETCH des données au montage du composant
+  // ============================================
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // On lance les 4 requêtes en parallèle (plus rapide !)
+        const [matchesRes, actualitesRes, jouleursRes, evenementsRes] = await Promise.all([
+          getMatchsPasses(),
+          getActualites(),
+          getJoueurs(),
+          getEvenements(),
+        ]);
+
+         console.log('JOUEURS REÇUS:', jouleursRes);
+
+        setMatchesPasses(matchesRes);
+        setActualites(actualitesRes);
+        setJoueurs(jouleursRes);
+        setEvenements(evenementsRes);
+      } catch (err) {
+        console.error('Erreur fetching Home:', err);
+        setError('Oops ! Erreur lors du chargement des données.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // ============================================
+  // TRANSFORMATION des données pour les composants
+  // ============================================
+
+  // Formater les joueurs pour le CarouselJoueurs
+  // Le composant attend : { photo, numero, nom }
+  const jouleursFormatted = joueurs.map((joueur) => ({
+    photo: joueur.photo || IMAGES.photosJoueurs.joueurAnonyme,
+    numero: joueur.numero || 0,
+    nom: `${joueur.nom} ${joueur.prenom}`,
+  }));
+
+  // Formater les evenements pour le CarouselEvenements
+  // Le composant attend : { type, title, logo?, logoAlt?, items?, date, location }
+  const evenementsFormatted = evenements.map((evenement) => {
+    if (evenement.type === 'match') {
+      return {
+        type: 'match' as const,
+        title: evenement.titre,
+        logo: IMAGES.logosAnonymes.logo1,
+        logoAlt: 'Logo équipe',
+        date: new Date(evenement.date).toLocaleDateString('fr-FR'),
+        location: evenement.lieu || 'Lieu non défini',
+      };
+    }
+    return {
       type: 'event' as const,
-      title: 'retrouver nous pour la tombolat',
-      items: ['Jeux pour enfants', 'Concours', 'Barbecue'],
-      date: '13/25/35',
-      location: 'Arles'
-    },
-    {
-      type: 'event' as const,
-      title: 'retrouver nous pour la tombolat',
-      items: ['Jeux pour enfants', 'Concours', 'Barbecue'],
-      date: '13/25/35',
-      location: 'Arles'
-    },
-    {
-      type: 'match' as const,
-      title: 'Notre prochain matche contre :',
-      logo: logoAno2,
-      logoAlt: 'logo equipe ext',
-      date: '13/25/35',
-      location: 'Arles'
-    },
-  ];
+      title: evenement.titre,
+      items: evenement.description ? evenement.description.split(',').map(item => item.trim()) : ['Aucun détail'],
+      date: new Date(evenement.date).toLocaleDateString('fr-FR'),
+      location: evenement.lieu || 'Lieu non défini',
+    };
+  });
+
+  // ============================================
+  // LOADING STATE
+  // ============================================
+  if (loading) {
+    return (
+      <div className="home">
+        <div className="home__loading">
+          <div className="home__spinner"></div>
+          <p>Chargement...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================
+  // ERROR STATE
+  // ============================================
+  if (error) {
+    return (
+      <div className="home">
+        <div className="home__error">
+          <p>{error}</p>
+          <Button variant="primary" size="medium" onClick={() => window.location.reload()}>
+            Réessayer
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================
+  // RENDER
+  // ============================================
   return (
     <div className="home">
+      {/* Hero */}
       <section className="home__hero">
         <h1 className="home__hero-title">Bienvenue au FC Provence</h1>
         <p className="home__hero-subtitle">plus qu'un club, une famille.</p>
         <div className="home__hero-cta">
           <Link to="/contact">
             <Button variant="secondary" size="small">
-            Contactez-nous
-          </Button>
+              Contactez-nous
+            </Button>
           </Link>
         </div>
       </section>
-      
-      {/* section des home__result */}
+
+      {/* Section matchs passés */}
       <section className="home__result">
-        <h2 className="home__result-title">Nos dernières matchs</h2>
-          <div className="home__result-container">
-            <CardMatch 
-              category="U10"
-              homeTeamLogo={IMAGES.ecussons.u10}
-              variant="green"
-              homeTeamName="FC Provence"
-              awayTeamLogo={IMAGES.logosAnonymes.logo1}
-              awayTeamName="Cruzeiro"
-              homeScore={4}
-              awayScore={2}
-              date="16/12/2024"
-              location="Stade de Mas-Thibert"
-            />
-            <CardMatch 
-              category="U10"
-              variant="green"
-              homeTeamLogo={IMAGES.ecussons.u10}
-              homeTeamName="FC Provence"
-              awayTeamLogo={IMAGES.logosAnonymes.logo2}
-              awayTeamName="Cruzeiro"
-              homeScore={4}
-              awayScore={2}
-              date="16/12/2024"
-              location="Stade de Mas-Thibert"
-            />
-            <CardMatch 
-              category="U10"
-              variant="green"
-              homeTeamLogo={IMAGES.ecussons.u10}
-              homeTeamName="FC Provence"
-              awayTeamLogo={IMAGES.logosAnonymes.logo3}
-              awayTeamName="Cruzeiro"
-              homeScore={4}
-              awayScore={2}
-              date="16/12/2024"
-              location="Stade de Mas-Thibert"
-            />
-          </div>
+        <h2 className="home__result-title">Nos derniers matchs</h2>
+        <div className="home__result-container">
+          {matchesPasses.length > 0 ? (
+            matchesPasses.slice(0, 3).map((match) => (
+              <CardMatch
+                key={match.id}
+                category={match.equipe_domicile_nom}
+                homeTeamLogo={IMAGES.ecussons.u10}
+                variant="green"
+                homeTeamName={match.equipe_domicile_nom}
+                awayTeamLogo={IMAGES.logosAnonymes.logo1}
+                awayTeamName={match.equipe_exterieur_nom}
+                homeScore={match.score_domicile ?? undefined}
+                awayScore={match.score_exterieur ?? undefined}
+                date={new Date(match.date).toLocaleDateString('fr-FR')}
+                location={match.location}
+              />
+            ))
+          ) : (
+            <p className="home__result-empty">Aucun match pour le moment.</p>
+          )}
+        </div>
       </section>
-      
-      {/* section home actualités */}
+
+      {/* Section actualités */}
       <section className="home__news">
         <div className="home__news-header">
           <h2 className="home__news-title">Actualités récentes</h2>
@@ -131,45 +176,39 @@ function Home() {
             Voir toutes les actualités →
           </Link>
         </div>
-        <div className='home__news-container'>
-          <CardActuPrincipal
-            title='Kermes du FCP'
-            items={[
-              "concours de tirs au but",
-              "grillade",
-              "tombolat"
-            ]}
-            date='23/04/26'
-            location='Stade de Mas-Thibert'
-          />
-          <div className="home__news-mini">
-            <CardActuMini
-          title='lorem ipsum'
-          items={[
-            "lorem ipsum",
-            "lorem ipsum",
-            "lorem ipsum"
-          ]}
-          date='05/03/26'
-          location='Stade de Mas-Thibert'
-          />
-          <CardActuMini
-          title='lorem ipsum'
-          items={[
-            "lorem ipsum",
-            "lorem ipsum",
-            "lorem ipsum"
-          ]}
-          date='05/03/26'
-          location='Stade de Mas-Thibert'
-          />
-          </div>
+        <div className="home__news-container">
+          {actualites.length > 0 ? (
+            <>
+              {/* Première actualité en grande carte */}
+              <CardActuPrincipal
+                title={actualites[0].titre}
+                items={actualites[0].contenu.split(',').map(item => item.trim())}
+                date={new Date(actualites[0].date).toLocaleDateString('fr-FR')}
+                location="FC Provence"
+              />
+              {/* Suivantes en mini cartes (max 2) */}
+              <div className="home__news-mini">
+                {actualites.slice(1, 3).map((actualite) => (
+                  <CardActuMini
+                    key={actualite.id}
+                    title={actualite.titre}
+                    items={actualite.contenu.split(',').map(item => item.trim())}
+                    date={new Date(actualite.date).toLocaleDateString('fr-FR')}
+                    location="FC Provence"
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="home__news-empty">Aucune actualité pour le moment.</p>
+          )}
         </div>
       </section>
-      
+
       {/* Bandeau défilant */}
-      <BannerScroll text='Découvre nos équipes et nos joueurs'/>
-      {/* sections home joueurs/équipes */}
+      <BannerScroll text="Découvre nos équipes et nos joueurs" />
+
+      {/* Section joueurs */}
       <section className="home__teams">
         <div className="home__teams-header">
           <h2 className="home__teams-title">Découvrez les équipes</h2>
@@ -177,31 +216,36 @@ function Home() {
             Voir toutes nos équipes →
           </Link>
         </div>
-        {/* carousel card joueur */}
-        <CarouselJoueurs joueurs={joueursData} />
+        {jouleursFormatted.length > 0 ? (
+          <CarouselJoueurs joueurs={jouleursFormatted} />
+        ) : (
+          <p className="home__teams-empty">Aucun joueur pour le moment.</p>
+        )}
       </section>
 
-      {/* section CTA home -> gallery */}
-      <section className='home__sectionCTA'>
+      {/* Section CTA */}
+      <section className="home__sectionCTA">
         <SectionCTAHome
-        title='Découvrez les photos de nos matchs et événement'
-        subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
-        buttonText='Voir nos galerie photos'
-        buttonLink='/galerie'
-        image= {IMAGES.sectionCTA.logo}
-        imageAlt='Mascotte du club'
+          title="Découvrez les photos de nos matchs et événement"
+          subtitle="Découvrez encore plus notre club et rejoignez nous des maintenant"
+          buttonText="Voir nos galerie photos"
+          buttonLink="/galerie"
+          image={IMAGES.sectionCTA.logo}
+          imageAlt="Mascotte du club"
         />
       </section>
 
       {/* Bandeau défilant */}
-      <BannerScroll text='Evénement a venir'/>
+      <BannerScroll text="Evénement a venir" />
 
-      {/* section evenement */}
+      {/* Section événements */}
       <section className="home__events">
-        {/* Titre */}
         <h2 className="home__events-title">Nos futurs matchs & événements</h2>
-        {/* Carousel */}
-        <CarouselEvenements evenements={evenementsData} />
+        {evenementsFormatted.length > 0 ? (
+          <CarouselEvenements evenements={evenementsFormatted} />
+        ) : (
+          <p className="home__events-empty">Aucun événement pour le moment.</p>
+        )}
       </section>
     </div>
   );

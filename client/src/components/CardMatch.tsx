@@ -4,8 +4,8 @@ type CardMatchProps = {
   homeTeamName: string;
   awayTeamLogo: string;
   awayTeamName: string;
-  homeScore: number;
-  awayScore: number;
+  homeScore?: number;
+  awayScore?: number;
   date: string;
   location: string;
   variant?: 'green' | 'yellow'; 
@@ -43,9 +43,9 @@ const CardMatch = ({
 
         {/* Score */}
         <div className="card-match__score">
-          <span className="card-match__score-number">{homeScore}</span>
+          <span className="card-match__score-number">{homeScore !== undefined ? homeScore : '-'}</span>
           <span className="card-match__score-separator">x</span>
-          <span className="card-match__score-number">{awayScore}</span>
+          <span className="card-match__score-number">{awayScore !== undefined ? awayScore : '-'}</span>
         </div>
 
         {/* Équipe extérieur */}
