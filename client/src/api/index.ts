@@ -8,6 +8,7 @@ import apiClient from './client';
 export interface Equipe {
   id: number;
   nom: string;
+  slug?: string;
   categorie: string;
   description?: string;
   logo?: string;
@@ -16,6 +17,7 @@ export interface Equipe {
   photo_equipe?: string;
   entrainements?: string;
   lieu?: string;
+  type?: 'club' | 'exterieure'; 
 }
 
 export interface Joueur {
@@ -193,7 +195,7 @@ export const getPhotosByGalerie = async (galerieId: number): Promise<Photo[]> =>
 };
 
 // ============================================
-// API AUTHENTIFICATION (pour plus tard - admin)
+// API AUTHENTIFICATION 
 // ============================================
 
 export const login = async (email: string, password: string) => {
