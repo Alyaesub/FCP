@@ -1,6 +1,8 @@
 // constants/images.ts
 // Toutes les URLs Cloudinary des images fixes du site
 
+/* import { evenements } from "../data/galerieData"; */
+
 export const IMAGES = {
   // Logo principal du club
   logo: 'https://res.cloudinary.com/diiorawlx/image/upload/v1769876356/logo-club-sansBg_gusil4.png',
@@ -72,4 +74,19 @@ export const IMAGES = {
   sectionCTA: {
     logo: 'https://res.cloudinary.com/diiorawlx/image/upload/v1769876348/logo-SectionCTA_t9s6c8.png',
   },
+
+  //images pour la galerie
+  match: {
+    match1 : 'https://res.cloudinary.com/diiorawlx/image/upload/v1770312906/match1_zj9ycc.jpg',
+    match2 : 'https://res.cloudinary.com/diiorawlx/image/upload/v1770312905/match2_suf4tr.jpg'
+  },
+  entrainement: {
+    entrainement1: 'https://res.cloudinary.com/diiorawlx/image/upload/v1770312871/entrainement1_p9ydcb.jpg',
+    entrainement2: 'https://res.cloudinary.com/diiorawlx/image/upload/v1770312873/entrainement2_uuyhdx.jpg',
+  },
+  evenements: {
+    evenements1: "https://res.cloudinary.com/diiorawlx/image/upload/v1770312820/event1_btcdwq.jpg",
+    evenements2: "https://res.cloudinary.com/diiorawlx/image/upload/v1770312819/event2_dwmanl.jpg",
+    evenements3: "https://res.cloudinary.com/diiorawlx/image/upload/v1770312819/event3_vzhcog.jpg",
+  }
 };
