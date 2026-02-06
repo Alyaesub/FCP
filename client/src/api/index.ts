@@ -202,3 +202,34 @@ export const login = async (email: string, password: string) => {
   const response = await apiClient.post('/login', { email, password });
   return response.data;
 };
+
+// ========================================
+// USERS & AUTH
+// ========================================
+
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  message: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    role: 'admin' | 'staff';
+    created_at: string;
+  };
+  token: string;
+}
+
+export const loginUser = async (data: LoginData): Promise<LoginResponse> => {
+  const response = await apiClient.post<LoginResponse>('/login', data);
+  return response.data;
+};
+
+export const getUsers = async () => {
+  const response = await apiClient.get('/users');
+  return response.data;
+};

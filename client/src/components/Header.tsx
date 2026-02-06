@@ -27,7 +27,7 @@ function Header() {
 
         {/* Bouton Administration */}
         <div className="header__actions">
-          <Link to="/admin">
+          <Link to="/admin/login">
             <Button variant="primary" size="small">
               Administration
             </Button>

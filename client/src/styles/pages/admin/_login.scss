@@ -1,0 +1,156 @@
+// client/src/styles/pages/admin/_login.scss
+
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--club-green) 0%, #013d1f 100%);
+  padding: 20px;
+
+  &__container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-size: 28px;
+    color: var(--club-green);
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__error {
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: 8px;
+    padding: 12px;
+    
+    p {
+      color: #c33;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  &__input {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: var(--font-secondary);
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--club-green);
+    }
+
+    &--error {
+      border-color: #c33;
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  &__field-error {
+    font-size: 13px;
+    color: #c33;
+    margin: 0;
+  }
+
+  &__submit {
+    background: var(--club-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+
+    &:hover:not(:disabled) {
+      background: #013d1f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(2, 87, 45, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__footer {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+
+    p {
+      font-size: 13px;
+      color: #999;
+      margin: 0;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 640px) {
+  .login {
+    &__container {
+      padding: 30px 20px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__logo {
+      width: 60px;
+    }
+  }
+}
