@@ -24,6 +24,7 @@
 @use './components/cardEquipe';
 @use './components/cardPhoto';
 @use './components/lightbox';
+@use './components/admin/adminLayout';
 
 //import des pages
 @use './pages/home';
@@ -32,3 +33,6 @@
 @use './pages/equipe-details';
 @use './pages/galerie';
 @use './pages/contact';
+@use './pages/admin/login';
+@use './pages/admin/dashboard';
+@use './pages/admin/users';
