@@ -127,3 +127,81 @@ export const getUserById = async (id: number): Promise<Omit<User, 'password'> | 
 
   return users[0] as Omit<User, 'password'>;
 };
+
+// Mettre à jour un utilisateur
+
+export const updateUser = async (id: number, data: Partial<RegisterData>): Promise<Omit<User, 'password'>> => {
+  const db = await dbPromise;
+
+  // 1. Vérifier que l'utilisateur existe
+  const existingUser = await getUserById(id);
+  if (!existingUser) {
+    throw new Error('Utilisateur non trouvé');
+  }
+
+  // 2. Construire la requête SQL dynamique
+  const updates: string[] = [];
+  const values: any[] = [];
+
+  if (data.name) {
+    updates.push('name = ?');
+    values.push(data.name);
+  }
+
+  if (data.email) {
+    // Vérifier que l'email n'est pas déjà utilisé par un autre user
+    const [emailCheck] = await db.query<RowDataPacket[]>(
+      'SELECT id FROM users WHERE email = ? AND id != ?',
+      [data.email, id]
+    );
+
+    if (emailCheck.length > 0) {
+      throw new Error('Cet email est déjà utilisé');
+    }
+
+    updates.push('email = ?');
+    values.push(data.email);
+  }
+
+  if (data.password) {
+    // Hasher le nouveau mot de passe
+    const hashedPassword = await hashPassword(data.password);
+    updates.push('password = ?');
+    values.push(hashedPassword);
+  }
+
+  if (data.role) {
+    updates.push('role = ?');
+    values.push(data.role);
+  }
+
+  // 3. Exécuter la requête SQL
+  if (updates.length > 0) {
+    const query = `UPDATE users SET ${updates.join(', ')} WHERE id = ?`;
+    values.push(id);
+    await db.query(query, values);
+  }
+
+  // 4. Retourner l'utilisateur mis à jour
+  const updatedUser = await getUserById(id);
+  return updatedUser!;
+};
+
+// Supprimer un utilisateur
+export const deleteUser = async (id: number): Promise<void> => {
+  const db = await dbPromise;
+
+  // 1. Vérifier que l'utilisateur existe
+  const existingUser = await getUserById(id);
+  if (!existingUser) {
+    throw new Error('Utilisateur non trouvé');
+  }
+
+  // 2. Empêcher la suppression d'un admin (sécurité)
+  if (existingUser.role === 'admin') {
+    throw new Error('Impossible de supprimer un administrateur');
+  }
+
+  // 3. Supprimer l'utilisateur
+  await db.query('DELETE FROM users WHERE id = ?', [id]);
+};

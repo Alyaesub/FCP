@@ -119,3 +119,86 @@ export const getUserByIdController = async (req: Request, res: Response): Promis
     res.status(500).json({ message: 'Erreur lors de la récupération de l\'utilisateur', error: error.message });
   }
 };
+
+/**
+ * Mettre à jour un utilisateur (admin uniquement)
+ * PUT /api/users/:id
+ */
+export const updateUserController = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const idParam = req.params.id;
+
+    if (!idParam) {
+      res.status(400).json({ message: 'ID manquant' });
+      return;
+    }
+
+    const id = parseInt(idParam, 10);
+
+    if (isNaN(id)) {
+      res.status(400).json({ message: 'ID invalide' });
+      return;
+    }
+
+    const { name, email, password, role } = req.body;
+
+    // Validation du role si fourni
+    if (role && !['admin', 'staff'].includes(role)) {
+      res.status(400).json({ message: 'Role invalide' });
+      return;
+    }
+
+    const updatedUser = await userService.updateUser(id, { name, email, password, role });
+
+    res.status(200).json({
+      message: 'Utilisateur mis à jour avec succès',
+      user: updatedUser
+    });
+  } catch (error: any) {
+    if (error.message === 'Utilisateur non trouvé') {
+      res.status(404).json({ message: error.message });
+      return;
+    }
+    if (error.message === 'Cet email est déjà utilisé') {
+      res.status(409).json({ message: error.message });
+      return;
+    }
+    res.status(500).json({ message: 'Erreur lors de la mise à jour', error: error.message });
+  }
+};
+
+/**
+ * Supprimer un utilisateur (admin uniquement)
+ * DELETE /api/users/:id
+ */
+export const deleteUserController = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const idParam = req.params.id;
+
+    if (!idParam) {
+      res.status(400).json({ message: 'ID manquant' });
+      return;
+    }
+
+    const id = parseInt(idParam, 10);
+
+    if (isNaN(id)) {
+      res.status(400).json({ message: 'ID invalide' });
+      return;
+    }
+
+    await userService.deleteUser(id);
+
+    res.status(200).json({ message: 'Utilisateur supprimé avec succès' });
+  } catch (error: any) {
+    if (error.message === 'Utilisateur non trouvé') {
+      res.status(404).json({ message: error.message });
+      return;
+    }
+    if (error.message === 'Impossible de supprimer un administrateur') {
+      res.status(403).json({ message: error.message });
+      return;
+    }
+    res.status(500).json({ message: 'Erreur lors de la suppression', error: error.message });
+  }
+};
