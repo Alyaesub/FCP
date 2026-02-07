@@ -105,3 +105,19 @@ export const deleteGalerie = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
+export const getGaleriePhotos = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: "ID manquant" });
+    }
+
+    const photos = await galerieService.getPhotosByGalerieId(parseInt(id));
+    res.status(200).json(photos);
+  } catch (error) {
+    console.error('Erreur getGaleriePhotos:', error);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};

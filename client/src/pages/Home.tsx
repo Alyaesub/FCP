@@ -43,8 +43,6 @@ function Home() {
           getEvenements(),
         ]);
 
-         console.log('JOUEURS REÇUS:', jouleursRes);
-
         setMatchesPasses(matchesRes);
         setActualites(actualitesRes);
         setJoueurs(jouleursRes);
@@ -183,7 +181,7 @@ function Home() {
               <CardActuPrincipal
                 title={actualites[0].titre}
                 items={actualites[0].contenu.split(',').map(item => item.trim())}
-                date={new Date(actualites[0].date).toLocaleDateString('fr-FR')}
+                date={new Date(actualites[0].date_publication).toLocaleDateString('fr-FR')}
                 location="FC Provence"
               />
               {/* Suivantes en mini cartes (max 2) */}
@@ -193,7 +191,7 @@ function Home() {
                     key={actualite.id}
                     title={actualite.titre}
                     items={actualite.contenu.split(',').map(item => item.trim())}
-                    date={new Date(actualite.date).toLocaleDateString('fr-FR')}
+                    date={new Date(actualite.date_publication).toLocaleDateString('fr-FR')}
                     location="FC Provence"
                   />
                 ))}

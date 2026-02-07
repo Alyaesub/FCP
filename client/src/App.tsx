@@ -17,7 +17,13 @@ import AdminLayout from './components/admin/AdminLayout'
 // Pages admin
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard'
-import Users from './pages/admin/Users' 
+import Users from './pages/admin/Users'
+import ActualitesGestion from './pages/admin/Actualites'
+import Evenements from './pages/admin/Evenements'
+import EquipesGestion from './pages/admin/Equipes'
+import Joueurs from './pages/admin/Joueurs'
+import Matchs from './pages/admin/Matchs'
+import GalerieGestion from './pages/admin/Galerie' 
 
 
 
@@ -69,6 +75,66 @@ function App() {
                 <PrivateRoute>
                   <AdminLayout>
                     <Users />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/actualites" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <ActualitesGestion />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/evenements" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <Evenements />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/equipes" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <EquipesGestion />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/joueurs" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <Joueurs />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/matches" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <Matchs />
+                  </AdminLayout>
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/admin/galerie" 
+              element={
+                <PrivateRoute>
+                  <AdminLayout>
+                    <GalerieGestion />
                   </AdminLayout>
                 </PrivateRoute>
               } 
