@@ -142,13 +142,13 @@ function Actualites() {
       <section className="actualites__heros">
         <HeroPages
           title="Découvrez toutes nos dernières actualités"
-          subtitle="nos derniers matchs et événements à venir"
+          subtitle="Nos derniers matchs et nos événements à venir"
         />
       </section>
 
       {/* Bandeau défilant */}
       <BannerScroll
-        text="Découvre les résultats de nos derniers matchs"
+        text="Découvrez les résultats de nos derniers matchs"
         backgroundColor="var(--club-green)"
         textColor="var(--club-yellow)"
       />
@@ -175,7 +175,7 @@ function Actualites() {
 
       {/* Section matchs futurs */}
       <section className="actualites__events">
-        <h2 className="actualites__events-title">Nos futurs matchs</h2>
+        <h2 className="actualites__events-title">Nos prochains matchs</h2>
         {matchsFuturFormatted.length > 0 ? (
           <CarouselEvenements evenements={matchsFuturFormatted} />
         ) : (
@@ -185,7 +185,7 @@ function Actualites() {
 
       {/* Bandeau défilant */}
       <BannerScroll
-        text="Découvrez nos dernier actualitées"
+        text="Découvrez nos dernières actualités"
         backgroundColor="var(--club-yellow)"
         textColor="var(--club-green)"
       />
@@ -202,7 +202,7 @@ function Actualites() {
 
       {/* Bandeau défilant */}
       <BannerScroll
-        text="Découvrez nos dernier et prochain évenement"
+        text="Découvrez nos derniers et prochains événements"
         backgroundColor="var(--club-yellow)"
         textColor="var(--club-green)"
       />

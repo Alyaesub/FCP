@@ -117,7 +117,7 @@ function Equipes() {
 
       {/* Bandeau défilant */}
       <BannerScroll 
-        text="N'attends plus rejoins nous vite"
+        text="N’attendez plus, rejoignez-nous !"
         backgroundColor="var(--club-yellow)"
         textColor="var(--club-green)"
       />
@@ -125,9 +125,9 @@ function Equipes() {
       {/* Section CTA */}
       <section className="equipes__sectionCTA">
         <SectionCTATeam
-          title="N'attendez plus rejoignez nous"
-          subtitle="Découvrez encore plus notre club et rejoignez nous dès maintenant"
-          buttonText="Contactez nous"
+          title="N’attendez plus, rejoignez-nous !"
+          subtitle="Découvrez encore plus notre club et rejoignez-nous dès maintenant"
+          buttonText="Contactez-nous"
           buttonLink="/contact"
           image={IMAGES.sectionCTA.logo}
           imageAlt="Mascotte du club"

@@ -88,14 +88,14 @@ function Galerie() {
       {/* Hero */}
       <section className="galerie__hero">
         <HeroPages
-          title="Découvrez toutes nos galeries photo"
+          title="Découvrez toutes nos galeries photos"
           subtitle="Revivez les meilleurs moments du club"
         />
       </section>
 
       {/* Bandeau */}
       <BannerScroll
-        text="retrouvez toutes les photos de nos événements"
+        text="Retrouvez toutes les photos de nos événements"
         backgroundColor="var(--club-green)"
         textColor="var(--club-yellow)"
       />

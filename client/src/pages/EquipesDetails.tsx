@@ -90,7 +90,7 @@ function EquipeDetails() {
       <section className="equipe-details__hero">
         <div className="container">
           <div className="equipe-details__hero-content">
-            <h1 className="equipe-details__hero-title">L'équipe des :</h1>
+            <h1 className="equipe-details__hero-title">L'équipe des {equipe.nom}</h1>
             <img 
               src={equipe.logo || IMAGES.ecussons.u10} 
               alt={equipe.nom}
@@ -104,7 +104,7 @@ function EquipeDetails() {
       {equipe.coach_nom && (
         <section className="equipe-details__coach">
           <div className="container">
-            <h2 className="equipe-details__coach-title">Le coach :</h2>
+            <h2 className="equipe-details__coach-title">Le coach</h2>
             <div className="equipe-details__coach-content">
               <img 
                 src={equipe.coach_photo || IMAGES.coach.anonyme} 
