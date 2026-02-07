@@ -17,7 +17,7 @@ export interface Equipe {
   photo_equipe?: string;
   entrainements?: string;
   lieu?: string;
-  type?: 'club' | 'exterieure'; 
+  type?: 'club' | 'exterieure';
 }
 
 export interface Joueur {
@@ -62,7 +62,8 @@ export interface Actualite {
   titre: string;
   contenu: string;
   image?: string;
-  date: string;
+  date_publication: string;
+  auteur: string | null;
 }
 
 export interface Galerie {

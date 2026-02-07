@@ -6,6 +6,7 @@ import {
   createGalerie,
   updateGalerie,
   deleteGalerie,
+  getGaleriePhotos,  
 } from "../controllers/galerie.controller";
 import { authMiddleware } from '../middlewares/authMiddleware';
 
@@ -15,6 +16,7 @@ const router = Router();
 router.get("/", getAllGaleries);
 router.get("/:id", getGalerieById);
 router.get("/equipe/:equipeId", getGaleriesByEquipeId);
+router.get("/:id/photos", getGaleriePhotos);
 
 // Routes protégé Admin ET staff
 router.post("/", authMiddleware, createGalerie);

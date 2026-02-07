@@ -5,7 +5,6 @@ interface Actualite {
   id?: number;
   titre: string;
   contenu: string;
-  image?: string;
   date_publication?: string;
   auteur?: string;
 }
@@ -33,12 +32,11 @@ export const getActualiteById = async (id: number): Promise<Actualite | null> =>
 export const createActualite = async (data: Actualite): Promise<Actualite> => {
   const db = await dbPromise;
   const [result] = await db.query<ResultSetHeader>(
-    `INSERT INTO actualites (titre, contenu, image, auteur)
-     VALUES (?, ?, ?, ?)`,
+    `INSERT INTO actualites (titre, contenu, auteur)
+     VALUES (?, ?, ?)`,
     [
       data.titre,
       data.contenu,
-      data.image,
       data.auteur,
     ]
   );
@@ -56,13 +54,11 @@ export const updateActualite = async (
     `UPDATE actualites SET 
       titre = COALESCE(?, titre),
       contenu = COALESCE(?, contenu),
-      image = COALESCE(?, image),
       auteur = COALESCE(?, auteur)
     WHERE id = ?`,
     [
       data.titre,
       data.contenu,
-      data.image,
       data.auteur,
       id,
     ]

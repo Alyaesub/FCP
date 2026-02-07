@@ -101,3 +101,12 @@ export const deleteGalerie = async (id: number): Promise<boolean> => {
   );
   return result.affectedRows > 0;
 };
+
+export const getPhotosByGalerieId = async (galerieId: number) => {
+  const db = await dbPromise;
+  const [rows] = await db.query(
+    'SELECT * FROM photos WHERE galerie_id = ? ORDER BY uploaded_at DESC',
+    [galerieId]
+  );
+  return rows;
+};
