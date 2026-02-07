@@ -21,7 +21,7 @@ function Header() {
             <li><Link to="/actualites">Actualités</Link></li>
             <li><Link to="/equipes">Nos équipes</Link></li>
             <li><Link to="/galerie">Galerie photo</Link></li>
-            <li><Link to="/contact">Contact & info</Link></li>
+            <li><Link to="/contact">Contact & infos</Link></li>
           </ul>
         </nav>
 

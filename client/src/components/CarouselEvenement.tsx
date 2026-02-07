@@ -16,40 +16,42 @@ type CarouselEvenementsProps = {
 };
 
 const CarouselEvenements = ({ evenements }: CarouselEvenementsProps) => {
-  // Index du premier événement affiché
+  const length = evenements?.length ?? 0;
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Fonction pour aller au suivant (décale de 3)
+  const step = length >= 3 ? 3 : length; // 0, 1, 2 ou 3
+  const arrowsDisabled = length <= 2;
+
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 3) % evenements.length);
+    if (arrowsDisabled || length === 0) return;
+    setCurrentIndex((prev) => (prev + step) % length);
   };
 
-  // Fonction pour aller au précédent (décale de -3)
   const handlePrev = () => {
-    setCurrentIndex((prev) => 
-      (prev - 3 + evenements.length) % evenements.length
-    );
+    if (arrowsDisabled || length === 0) return;
+    setCurrentIndex((prev) => (prev - step + length) % length);
   };
 
-  // Sélectionner les 3 événements à afficher
-  const evenementsAffiches = [
-    evenements[currentIndex % evenements.length],
-    evenements[(currentIndex + 1) % evenements.length],
-    evenements[(currentIndex + 2) % evenements.length],
-  ];
+  // Rien à afficher
+  if (length === 0) return null;
+
+  // Génère exactement step éléments, jamais undefined
+  const evenementsAffiches = Array.from({ length: step }, (_, i) => {
+    return evenements[(currentIndex + i) % length];
+  });
 
   return (
     <div className="carousel-evenements">
-      {/* Flèche gauche */}
-      <button 
-        className="carousel-evenements__arrow carousel-evenements__arrow--left"
-        onClick={handlePrev}
-        aria-label="Événements précédents"
-      >
-        ←
-      </button>
-
-      {/* Container avec les 3 cards */}
+      {!arrowsDisabled && (
+        <button
+          className="carousel-evenements__arrow carousel-evenements__arrow--left"
+          onClick={handlePrev}
+          aria-label="Événements précédents"
+          disabled={arrowsDisabled}
+        >
+          ←
+        </button>
+      )}
       <div className="carousel-evenements__container">
         {evenementsAffiches.map((evenement, index) => (
           <CardEvenement
@@ -64,15 +66,17 @@ const CarouselEvenements = ({ evenements }: CarouselEvenementsProps) => {
           />
         ))}
       </div>
-
-      {/* Flèche droite */}
-      <button 
-        className="carousel-evenements__arrow carousel-evenements__arrow--right"
-        onClick={handleNext}
-        aria-label="Événements suivants"
-      >
-        →
-      </button>
+      
+      {!arrowsDisabled && (
+        <button
+          className="carousel-evenements__arrow carousel-evenements__arrow--right"
+          onClick={handleNext}
+          aria-label="Événements suivants"
+          disabled={arrowsDisabled}
+        >
+          →
+        </button>
+      )}
     </div>
   );
 };

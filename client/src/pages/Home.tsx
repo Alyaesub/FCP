@@ -130,7 +130,7 @@ function Home() {
       {/* Hero */}
       <section className="home__hero">
         <h1 className="home__hero-title">Bienvenue au FC Provence</h1>
-        <p className="home__hero-subtitle">plus qu'un club, une famille.</p>
+        <p className="home__hero-subtitle">Plus qu'un club, une famille.</p>
         <div className="home__hero-cta">
           <Link to="/contact">
             <Button variant="secondary" size="small">
@@ -204,7 +204,7 @@ function Home() {
       </section>
 
       {/* Bandeau défilant */}
-      <BannerScroll text="Découvre nos équipes et nos joueurs" />
+      <BannerScroll text="Découvrez nos équipes et nos joueurs" />
 
       {/* Section joueurs */}
       <section className="home__teams">
@@ -224,9 +224,9 @@ function Home() {
       {/* Section CTA */}
       <section className="home__sectionCTA">
         <SectionCTAHome
-          title="Découvrez les photos de nos matchs et événement"
-          subtitle="Découvrez encore plus notre club et rejoignez nous des maintenant"
-          buttonText="Voir nos galerie photos"
+          title="Découvrez les photos de nos matchs et événements"
+          subtitle="Découvrez encore plus notre club et rejoignez nous dès maintenant."
+          buttonText="Voir notre galerie photo"
           buttonLink="/galerie"
           image={IMAGES.sectionCTA.logo}
           imageAlt="Mascotte du club"
@@ -234,11 +234,11 @@ function Home() {
       </section>
 
       {/* Bandeau défilant */}
-      <BannerScroll text="Evénement a venir" />
+      <BannerScroll text="Événements à venir" />
 
       {/* Section événements */}
       <section className="home__events">
-        <h2 className="home__events-title">Nos futurs matchs & événements</h2>
+        <h2 className="home__events-title">Nos prochains matchs et événements </h2>
         {evenementsFormatted.length > 0 ? (
           <CarouselEvenements evenements={evenementsFormatted} />
         ) : (

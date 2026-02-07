@@ -10,13 +10,13 @@ function Contact() {
     <div className="contact">
       <section className="contact__hero">
         <HeroPages
-        title="Rejoingez Nous vite"
-        subtitle="N'attendez plus et découvrez comment nous rejoindre"
+        title="Rejoingez-nous"
+        subtitle="N’attendez plus : découvrez comment nous rejoindre"
         />
       </section>
 
       <BannerScroll
-      text="chosissez votre maniére de nous contactez"
+      text="Chosissez votre manière de nous contacter"
       backgroundColor="var(--club-green)"
       textColor="var(--club-yellow)"
       />
@@ -29,39 +29,33 @@ function Contact() {
           <div className="contact__infos-grid">
             {/* Card Adresse */}
             <div className="contact__info-card">
-              <h3 className="contact__info-card-title">Notre adresse postale :</h3>
+              <h3 className="contact__info-card-title">Notre adresse</h3>
               <p className="contact__info-card-text">
-                Stade Municipal de Provence<br />
-                12 Avenue des Sports<br />
-                13000 Marseille
+                Stade Municipal de Mas-Thibert<br />
+                Avenue Alain Guigue<br />
+                13104 Mas-Thibert
               </p>
             </div>
 
             {/* Card Email */}
             <div className="contact__info-card">
-              <h3 className="contact__info-card-title">Notre email :</h3>
+              <h3 className="contact__info-card-title">Notre email</h3>
               <a 
-                href="mailto:contact@fcprovence.fr" 
+                href="mailto:fcprovencale@gmail.com" 
                 className="contact__info-card-link"
               >
-                contact@fcprovence.fr
+                fcprovencale@gmail.com
               </a>
             </div>
 
             {/* Card Téléphone */}
             <div className="contact__info-card">
-              <h3 className="contact__info-card-title">Nos numéros :</h3>
+              <h3 className="contact__info-card-title">Téléphone</h3>
               <a 
-                href="tel:+33123456789" 
+                href="tel:+33680689162" 
                 className="contact__info-card-link"
               >
-                01 23 45 67 89
-              </a>
-              <a 
-                href="tel:+33987654321" 
-                className="contact__info-card-link"
-              >
-                09 87 65 43 21
+                06 80 68 91 62
               </a>
             </div>
           </div>
@@ -71,17 +65,17 @@ function Contact() {
       {/* section CTA */}
       <section className='equipes__sectionCTA'>
         <SectionCTATeam
-        title="N'attendez plus rejoingnez nous"
-        subtitle='Découvrez encore plus notre club et rejoignez nous des maintenant'
+        title="N'attendez plus rejoignez-nous"
+        subtitle='Découvrez encore plus notre club et rejoignez-nous des maintenant'
         buttonText='Contactez nous par mail'
-        buttonLink="mailto:www.fc-provence.fr"
+        buttonLink="mailto:fcprovencale@gmail.com"
         image= {IMAGES.sectionCTA.logo}
         imageAlt='Mascotte du club'
         />
       </section>
 
       <BannerScroll
-      text="quelques infos pour nous rejoindre"
+      text="Quelques infos pour nous rejoindre"
       backgroundColor="var(--club-green)"
       textColor="var(--club-yellow)"
       />
@@ -108,9 +102,13 @@ function Contact() {
               <div className="contact__inscriptions-card-documents">
                 <h4 className="contact__inscriptions-card-subtitle">Documents à fournir :</h4>
                 <ul className="contact__inscriptions-card-list">
-                  <li>Certificat médical de non contre-indication</li>
-                  <li>Photocopie de la carte d'identité</li>
-                  <li>Photo d'identité récente</li>
+                  <li>
+                    Après avoir communiqué une adresse e-mail valide, suivez le lien transmis par la FFF.
+                  </li>
+                  <li>Certificat médical de non-contre-indication</li>
+                  <li>Photocopie de la carte d’identité</li>
+                  <li>Photo d’identité récente</li>
+                  <li>Paiement en ligne ou sur place, directement au club</li>
                 </ul>
               </div>
             </div>
