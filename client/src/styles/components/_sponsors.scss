@@ -38,6 +38,7 @@
   &__item {
     width: 100%;
     max-width: 200px;
+    height: 120px;
     padding: 1.5rem;
     background-color: white;
     border-radius: 10px;
@@ -53,8 +54,9 @@
     }
 
     img {
-      width: 100%;
+      width: auto;
       height: auto;
+      max-width: 100%;
       max-height: 80px;
       object-fit: contain;
       filter: grayscale(0);
