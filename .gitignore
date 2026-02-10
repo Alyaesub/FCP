@@ -1,10 +1,14 @@
 # Global
 node_modules
-.env
 dist
 build
 .DS_Store
 *.log
+
+# Environnement
+.env
+.env.local
+.env.production
 
 # Client React
 client/.env
