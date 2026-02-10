@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # SERVICE 1 : BASE DE DONNÉES MYSQL
+  # ========================================
+  mysql:
+    image: mysql:8.0
+    container_name: fcprovence-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./server/src/database/migrations:/docker-entrypoint-initdb.d/migrations
+      - ./server/src/database/seeds:/docker-entrypoint-initdb.d/seeds
+    networks:
+      - fcprovence-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${DB_USER}", "-p${DB_PASS}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # SERVICE 2 : BACKEND NODE.JS + EXPRESS
+  # ========================================
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: fcprovence-backend
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: mysql
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+    ports:
+      - "5001:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - fcprovence-network
+
+  # ========================================
+  # SERVICE 3 : FRONTEND REACT + NGINX
+  # ========================================
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    container_name: fcprovence-frontend
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - fcprovence-network
+
+# ========================================
+# VOLUMES PERSISTANTS
+# ========================================
+volumes:
+  mysql_data:
+    driver: local
+
+# ========================================
+# RÉSEAU INTERNE
+# ========================================
+networks:
+  fcprovence-network:
+    driver: bridge

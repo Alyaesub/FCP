@@ -7,6 +7,8 @@ async function connectDB() {
   try {
     const { DB_HOST, DB_USER, DB_PASS, DB_NAME } = process.env;
 
+    console.log("🔍 CONNEXION AVEC:", { DB_HOST, DB_USER, DB_NAME });
+
     if (!DB_HOST || !DB_USER || !DB_PASS || !DB_NAME) {
       throw new Error("❌ Variables d'environnement DB manquantes");
     }
