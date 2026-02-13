@@ -18,7 +18,10 @@ const PORT = 3000
 //Middlewares
 app.use(cors())
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:8080'], // ← Ajoute 8080
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:8080'], // ← Ajoute 8080
+    
   credentials: true
 }));
 app.use(express.json({ limit: "50mb" }));  // ← AUGMENTE LA taille des fichier upload
