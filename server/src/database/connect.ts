@@ -18,7 +18,10 @@ async function connectDB() {
       user: DB_USER,
       password: DB_PASS,
       database: DB_NAME,
+      charset: 'utf8mb4'
     });
+
+    await db.query("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
 
     console.log("✅ Connexion MySQL réussie !");
     return db;
