@@ -22,8 +22,6 @@ export const getAllEquipes = async (): Promise<Equipe[]> => {
   const db = await dbPromise;
   const [rows] = await db.query<RowDataPacket[]>("SELECT * FROM equipes");
 
-   console.log("📊 RÉSULTAT SQL equipes:", rows); // ← AJOUTE CETTE LIGNE
-  console.log("📊 NOMBRE D'ÉQUIPES:", rows.length); // ← AJOUTE CETTE LIGNE
   return rows as Equipe[];
 };
 
