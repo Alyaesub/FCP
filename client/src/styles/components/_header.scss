@@ -20,6 +20,8 @@
   }
 
   &__logo {
+    z-index: 102; // Au-dessus du menu
+
     a {
       display: flex;
       align-items: center;
@@ -44,6 +46,39 @@
       color: var(--club-yellow);
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+  }
+
+  // 🍔 MENU BURGER (caché sur desktop)
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 102;
+
+    span {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    // Animation quand le menu est ouvert
+    &--open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
     }
   }
 
@@ -87,6 +122,8 @@
   }
 
   &__actions {
+    z-index: 102; // Au-dessus du menu
+
     .btn-admin {
       display: inline-block;
       padding: 0.3rem 0.5rem;
@@ -107,24 +144,91 @@
   }
 }
 
-// Responsive
+// 📱 RESPONSIVE MOBILE
 @media (max-width: 968px) {
   .header {
     &__container {
-      flex-direction: column;
-      gap: 1rem;
+      padding: 0 1.5rem;
     }
 
+    // Afficher le burger sur mobile
+    &__burger {
+      display: flex;
+    }
+
+    // Navigation mobile (menu déroulant)
     &__nav {
+      position: fixed;
+      top: 0;
+      right: -100%; // Caché par défaut
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: var(--club-green);
+      padding: 5rem 2rem 2rem;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      transition: right 0.3s ease;
+      z-index: 101;
+
+      // Menu ouvert
+      &--open {
+        right: 0;
+      }
+
       ul {
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+      }
+
+      li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       a {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 0;
+
+        &:hover {
+          background-color: rgba(250, 177, 49, 0.1);
+        }
       }
+    }
+
+    // Bouton admin sur mobile
+    &__actions {
+      position: fixed;
+      bottom: 2rem;
+      right: -100%;
+      transition: right 0.3s ease;
+      z-index: 101;
+
+      // Visible quand menu ouvert
+      .header__nav--open ~ & {
+        right: 2rem;
+      }
+    }
+  }
+}
+
+// 📱 TRÈS PETITS ÉCRANS
+@media (max-width: 480px) {
+  .header {
+    &__logo {
+      img {
+        height: 50px;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    &__nav {
+      width: 80%;
     }
   }
 }

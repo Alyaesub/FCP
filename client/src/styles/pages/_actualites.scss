@@ -1,3 +1,4 @@
+@use "sass:color";
 .actualites {
   background-color: var(--soft-background);
 
@@ -118,7 +119,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: darken(#02572d, 10%);
+        background-color: color.adjust(#02572d, $lightness: -10%);;
       }
     }
   }
