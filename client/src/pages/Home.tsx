@@ -15,7 +15,7 @@ import BannerScroll from '../components/BannerScroll';
 import { IMAGES } from '../constants/images';
 
 // API
-import { getMatchsPasses, getActualites, getJoueurs, getEvenements } from '../api/index';
+import { getMatchsPasses, getMatchsFutur, getActualites, getJoueurs, getEvenements } from '../api/index';
 import type { Match, Actualite, Joueur, Evenement } from '../api/index';
 
 function Home() {
@@ -23,6 +23,7 @@ function Home() {
   // STATES
   // ============================================
   const [matchesPasses, setMatchesPasses] = useState<Match[]>([]);
+  const [matchsFuturs, setMatchsFuturs] = useState<Match[]>([]); 
   const [actualites, setActualites] = useState<Actualite[]>([]);
   const [joueurs, setJoueurs] = useState<Joueur[]>([]);
   const [evenements, setEvenements] = useState<Evenement[]>([]);
@@ -35,17 +36,19 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // On lance les 4 requêtes en parallèle (plus rapide !)
-        const [matchesRes, actualitesRes, jouleursRes, evenementsRes] = await Promise.all([
+        // On lance les 6 requêtes en parallèle (plus rapide !)
+        const [matchesPassesRes, matchsFutursRes, actualitesRes, joueursRes, evenementsRes] = await Promise.all([
           getMatchsPasses(),
+          getMatchsFutur(),
           getActualites(),
           getJoueurs(),
           getEvenements(),
         ]);
 
-        setMatchesPasses(matchesRes);
+        setMatchesPasses(matchesPassesRes);
+        setMatchsFuturs(matchsFutursRes);
         setActualites(actualitesRes);
-        setJoueurs(jouleursRes);
+        setJoueurs(joueursRes);
         setEvenements(evenementsRes);
       } catch (err) {
         console.error('Erreur fetching Home:', err);
@@ -63,34 +66,33 @@ function Home() {
   // ============================================
 
   // Formater les joueurs pour le CarouselJoueurs
-  // Le composant attend : { photo, numero, nom }
-  const jouleursFormatted = joueurs.map((joueur) => ({
+  const joueursFormatted = joueurs.map((joueur) => ({
     photo: joueur.photo || IMAGES.photosJoueurs.joueurAnonyme,
     numero: joueur.numero || 0,
     nom: `${joueur.nom} ${joueur.prenom}`,
   }));
 
-  // Formater les evenements pour le CarouselEvenements
-  // Le composant attend : { type, title, logo?, logoAlt?, items?, date, location }
-  const evenementsFormatted = evenements.map((evenement) => {
-    if (evenement.type === 'match') {
-      return {
-        type: 'match' as const,
-        title: evenement.titre,
-        logo: IMAGES.logosAnonymes.logo1,
-        logoAlt: 'Logo équipe',
-        date: new Date(evenement.date).toLocaleDateString('fr-FR'),
-        location: evenement.lieu || 'Lieu non défini',
-      };
-    }
-    return {
+  // Formater les matchs futurs + événements pour le carousel
+  const evenementsFormatted = [
+    // 1️⃣ LES MATCHS À VENIR (depuis la table matches)
+    ...matchsFuturs.map((match) => ({
+      type: 'match' as const,
+      title: `${match.equipe_domicile_nom} vs ${match.equipe_exterieur_nom}`,
+      logo: match.equipe_exterieur_logo || IMAGES.logosAnonymes.logo1,
+      logoAlt: match.equipe_exterieur_nom,
+      date: new Date(match.date).toLocaleDateString('fr-FR'),
+      location: match.location,
+    })),
+    
+    // 2️⃣ LES ÉVÉNEMENTS (tournois, réunions, etc.)
+    ...evenements.map((evenement) => ({
       type: 'event' as const,
       title: evenement.titre,
       items: evenement.description ? evenement.description.split(',').map(item => item.trim()) : ['Aucun détail'],
       date: new Date(evenement.date).toLocaleDateString('fr-FR'),
       location: evenement.lieu || 'Lieu non défini',
-    };
-  });
+    })),
+  ];
 
   // ============================================
   // LOADING STATE
@@ -152,7 +154,7 @@ function Home() {
                 homeTeamLogo={match.equipe_domicile_logo || IMAGES.logo}
                 variant="green"
                 homeTeamName={match.equipe_domicile_nom}
-                awayTeamLogo={match.equipe_exterieur_logo ||IMAGES.logosAnonymes.logo1}
+                awayTeamLogo={match.equipe_exterieur_logo || IMAGES.logosAnonymes.logo1}
                 awayTeamName={match.equipe_exterieur_nom}
                 homeScore={match.score_domicile ?? undefined}
                 awayScore={match.score_exterieur ?? undefined}
@@ -214,8 +216,8 @@ function Home() {
             Voir toutes nos équipes →
           </Link>
         </div>
-        {jouleursFormatted.length > 0 ? (
-          <CarouselJoueurs joueurs={jouleursFormatted} />
+        {joueursFormatted.length > 0 ? (
+          <CarouselJoueurs joueurs={joueursFormatted} />
         ) : (
           <p className="home__teams-empty">Aucun joueur pour le moment.</p>
         )}
