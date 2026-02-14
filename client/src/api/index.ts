@@ -55,6 +55,9 @@ export interface Evenement {
   date: string;
   lieu?: string;
   type?: string;
+  equipe_domicile_id?: number;    // ← AJOUTER
+  equipe_exterieur_id?: number;   // ← AJOUTER
+  tournoi_id?: number; 
 }
 
 export interface Actualite {
