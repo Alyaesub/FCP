@@ -18,7 +18,18 @@ import { IMAGES } from '../constants/images';
 import { getMatchsPasses, getMatchsFutur, getActualites, getJoueurs, getEvenements } from '../api/index';
 import type { Match, Actualite, Joueur, Evenement } from '../api/index';
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
+
 function Home() {
+  //SEO
+  useSEO({
+    title: 'Accueil',
+    description: 'Bienvenue sur le site officiel du FC Provençal.',
+    url: '/'
+  });
+  
   // ============================================
   // STATES
   // ============================================
@@ -74,7 +85,7 @@ function Home() {
 
   // Formater les matchs futurs + événements pour le carousel
   const evenementsFormatted = [
-    // 1️⃣ LES MATCHS À VENIR (depuis la table matches)
+    // LES MATCHS À VENIR (depuis la table matches)
     ...matchsFuturs.map((match) => ({
       type: 'match' as const,
       title: `${match.equipe_domicile_nom} vs ${match.equipe_exterieur_nom}`,
@@ -84,7 +95,7 @@ function Home() {
       location: match.location,
     })),
     
-    // 2️⃣ LES ÉVÉNEMENTS (tournois, réunions, etc.)
+    // LES ÉVÉNEMENTS (tournois, réunions, etc.)
     ...evenements.map((evenement) => ({
       type: 'event' as const,
       title: evenement.titre,

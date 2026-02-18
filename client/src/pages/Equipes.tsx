@@ -13,7 +13,17 @@ import { IMAGES } from '../constants/images';
 import { getEquipes } from '../api/index';
 import type { Equipe } from '../api/index';
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
 function Equipes() {
+
+  //SEO
+  useSEO({
+  title: 'Nos Équipes',
+  description: 'Découvrez toutes les équipes du FC Provençal — des U7 aux Seniors.',
+  url: '/equipes'
+});
   // ============================================
   // STATES
   // ============================================
