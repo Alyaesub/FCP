@@ -19,6 +19,9 @@ import {
 } from '../api/index';
 import type { Match, Evenement, Actualite } from '../api/index';
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
 function Actualites() {
   // ============================================
   // STATES
@@ -29,6 +32,13 @@ function Actualites() {
   const [actualites, setActualites] = useState<Actualite[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  //SEO
+  useSEO({
+  title: 'Actualités',
+  description: 'Toutes les actualités du FC Provençal — Résultats, annonces et informations du club.',
+  url: '/actualites'
+});
 
   // ============================================
   // FETCH des données

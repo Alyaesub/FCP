@@ -11,6 +11,9 @@ import { IMAGES } from '../constants/images';
 import { getEquipes, getJoueursByEquipe } from '../api/index';
 import type { Equipe, Joueur } from '../api/index';
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
 function EquipeDetails() {
   // ============================================
   // RÉCUPÉRATION DU SLUG
@@ -24,6 +27,13 @@ function EquipeDetails() {
   const [joueurs, setJoueurs] = useState<Joueur[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [notFound, setNotFound] = useState<boolean>(false);
+
+  //SEO
+  useSEO({
+  title: equipe?.nom || 'Équipe',
+  description: `Découvrez l'équipe ${equipe?.nom} du FC Provençal — joueurs, coach et calendrier.`,
+  url: `/equipes/${slug}`
+});
 
   // ============================================
   // FETCH équipe + joueurs

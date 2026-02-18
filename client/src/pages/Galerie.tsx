@@ -10,7 +10,17 @@ import Lightbox from "../components/Lightbox";
 import { getGaleries, getPhotos } from "../api/index";
 import type { Galerie as GalerieType, Photo } from "../api/index";
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
 function Galerie() {
+  //SEO
+  useSEO({
+  title: 'Galerie Photo',
+  description: 'Galerie photo officielle du FC Provençal — Albums de matchs, entraînements et tournois.',
+  url: '/galerie'
+});
+
   // ============================================
   // STATES
   // ============================================

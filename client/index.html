@@ -4,12 +4,59 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/main.tsx" defer></script>
+
+    <!-- SEO de base -->
+    <title>FC Provençal</title>
+    <meta name="description" content="Site officiel du FC Provençal — Actualités, équipes, matchs et galerie photo du club de football local." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://fcprovençal.fr" />
+
+    <!-- Open Graph (partage réseaux sociaux) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FC Provençal" />
+    <meta property="og:title" content="FC Provençal" />
+    <meta property="og:description" content="Site officiel du FC Provençal — Actualités, équipes, matchs et galerie photo du club de football local." />
+    <meta property="og:url" content="https://fcprovençal.fr" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+
+    
     <title>FC Provence</title>
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+
+    <script type="module" src="/src/main.tsx" defer></script>
+
+    <!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "FC Provençal",
+  "sport": "Football",
+  "url": "https://fcprovençal.fr",
+  "logo": "https://res.cloudinary.com/diiorawlx/image/upload/v1771080962/equipes/logo/ux28hadafhweb1amimqk.png",
+  "description": "Site officiel du FC Provençal — Actualités, équipes, matchs et galerie photo du club de football local.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "FR",
+    "addressRegion": "Provence"
+  },
+  "sameAs": [
+    "https://www.facebook.com/Football.Club.Provencal/",
+    "https://www.instagram.com/fcp.masthibert/"
+  ]
+}
+</script>
   </head>
   <body>
     <div id="root"></div>

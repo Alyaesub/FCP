@@ -5,7 +5,16 @@ import SectionCTATeam from '../components/SectionCTA';
 //import img 
 import { IMAGES } from '../constants/images';
 
+//import du SEO
+import useSEO from '../hooks/useSEO';
+
 function Contact() {
+  //SEO
+  useSEO({
+  title: 'Contact & Rejoindre le club',
+  description: 'Contactez le FC Provençal ou rejoignez-nous — informations pratiques, adresse et horaires.',
+  url: '/contact'
+});
   return (
     <div className="contact">
       <section className="contact__hero">
